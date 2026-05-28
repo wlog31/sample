@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2022 개정 교육과정 선택과목 안내서</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    background: #f0f4f8;
+    color: #1a202c;
+    min-height: 100vh;
+  }
+
+  /* ── 헤더 ── */
+  header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d6a9f 60%, #3a8dc5 100%);
+    color: white;
+    padding: 3rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -10%;
+    width: 120%; height: 200%;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.07) 0%, transparent 60%);
+  }
+  header h1 { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; letter-spacing: -0.5px; }
+  header p  { font-size: 1rem; opacity: .85; margin-bottom: .3rem; }
+  header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 20px;
+    padding: .25rem .9rem;
+    font-size: .8rem;
+    margin-top: .7rem;
+  }
+
+  /* ── 메인 카드 그리드 ── */
+  main {
+    max-width: 1000px;
+    margin: -2rem auto 0;
+    padding: 0 1.5rem 3rem;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .menu-card {
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 2rem 1.8rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    transition: transform .2s, box-shadow .2s;
+    position: relative;
+    overflow: hidden;
+    border-top: 5px solid transparent;
+  }
+  .menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.14);
+  }
+  .menu-card.blue  { border-top-color: #2d6a9f; }
+  .menu-card.green { border-top-color: #2d9f6a; }
+  .menu-card.orange{ border-top-color: #e07b2a; }
+
+  .card-icon { font-size: 2.8rem; line-height: 1; }
+  .card-title { font-size: 1.3rem; font-weight: 700; }
+  .card-subtitle { font-size: .85rem; color: #718096; line-height: 1.5; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .3rem; }
+  .tag {
+    background: #edf2f7;
+    color: #4a5568;
+    font-size: .72rem;
+    padding: .2rem .6rem;
+    border-radius: 99px;
+    font-weight: 500;
+  }
+  .card-arrow {
+    position: absolute;
+    right: 1.5rem; bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: #a0aec0;
+    transition: right .2s;
+  }
+  .menu-card:hover .card-arrow { right: 1rem; }
+
+  /* ── 안내 박스 ── */
+  .info-box {
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    padding: 1.5rem 2rem;
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .info-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .info-text h3 { font-size: .95rem; font-weight: 700; margin-bottom: .4rem; color: #2d6a9f; }
+  .info-text p { font-size: .83rem; color: #718096; line-height: 1.6; }
+
+  /* ── 통계 바 ── */
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem auto;
+    flex-wrap: wrap;
+  }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 2rem; font-weight: 800; color: #2d6a9f; }
+  .stat-label { font-size: .8rem; color: #718096; }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: .8rem;
+    color: #a0aec0;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.4rem; }
+    .card-grid { grid-template-columns: 1fr; }
+    .stats { gap: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p>2026학년도 입학생을 위한</p>
+  <h1>📖 2022 개정 교육과정<br>선택과목 안내서</h1>
+  <div class="badge">고등학교 선택과목 지도 자료</div>
+</header>
+
+<main>
+
+  <!-- 통계 -->
+  <div class="stats" id="stats">
+    <div class="stat-item"><div class="stat-num" id="stat-series">19</div><div class="stat-label">계열</div></div>
+    <div class="stat-item"><div class="stat-num" id="stat-dept">123</div><div class="stat-label">학과</div></div>
+    <div class="stat-item"><div class="stat-num" id="stat-subj">211</div><div class="stat-label">선택과목</div></div>
+  </div>
+
+  <!-- 메인 메뉴 카드 -->
+  <div class="card-grid">
+    <a class="menu-card blue" href="series/index.html">
+      <div class="card-icon">🎓</div>
+      <div class="card-title">계열별 안내</div>
+      <div class="card-subtitle">대학 계열을 선택하면 관련 학과와 권장 선택과목, 전공 선택 Tip을 확인할 수 있습니다.</div>
+      <div class="card-tags">
+        <span class="tag">언어·문학</span><span class="tag">자연과학</span><span class="tag">의약학</span>
+        <span class="tag">정보·컴퓨터</span><span class="tag">19개 계열</span>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="menu-card green" href="departments/index.html">
+      <div class="card-icon">🏫</div>
+      <div class="card-title">학과별 안내</div>
+      <div class="card-subtitle">계열과 학과를 선택하면 학과 소개, 개설대학, 졸업 후 진로, 권장 고교 선택과목을 볼 수 있습니다.</div>
+      <div class="card-tags">
+        <span class="tag">123개 학과</span><span class="tag">개설대학</span><span class="tag">졸업 후 진로</span>
+        <span class="tag">권장 선택과목</span>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="menu-card orange" href="subjects/index.html">
+      <div class="card-icon">📋</div>
+      <div class="card-title">선택과목별 안내</div>
+      <div class="card-subtitle">교과군과 유형(일반·진로·융합선택)으로 과목을 탐색하고 상세 정보를 확인합니다.</div>
+      <div class="card-tags">
+        <span class="tag">일반선택</span><span class="tag">진로선택</span><span class="tag">융합선택</span>
+        <span class="tag">수능 여부</span><span class="tag">평가정보</span>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+  </div>
+
+  <!-- 사용 안내 -->
+  <div class="info-box">
+    <div class="info-icon">💡</div>
+    <div class="info-text">
+      <h3>이용 방법</h3>
+      <p>
+        ① <strong>계열별 안내</strong>에서 희망 계열을 클릭하여 전반적인 선택과목 방향을 파악하세요.<br>
+        ② <strong>학과별 안내</strong>에서 계열 → 학과 순서로 선택하여 학과별 세부 정보를 확인하세요.<br>
+        ③ <strong>선택과목별 안내</strong>에서 특정 과목의 특성·평가방법·수능 출제 여부를 조회하세요.
+      </p>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-icon">📌</div>
+    <div class="info-text">
+      <h3>출처</h3>
+      <p>
+        본 안내서는 「2026학년도 2022 개정 교육과정 선택과목 안내서」를 기반으로 제작되었습니다.<br>
+        학교별 교육과정 편성 현황에 따라 실제 개설 과목이 다를 수 있으니 학교 교육과정 확인 후 활용하시기 바랍니다.
+      </p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  2026학년도 입학생을 위한 2022 개정 교육과정 선택과목 안내서 &nbsp;|&nbsp; 고등학교 선택과목 지도 자료
+</footer>
+
+<script src="data/data.js"></script>
+<script>
+  if (typeof EDU_DATA !== 'undefined') {
+    document.getElementById('stat-series').textContent = Object.keys(EDU_DATA.series).length;
+    document.getElementById('stat-dept').textContent   = Object.keys(EDU_DATA.departments).length;
+    document.getElementById('stat-subj').textContent   = Object.keys(EDU_DATA.subjects).length;
+  }
+</script>
+</body>
+</html>

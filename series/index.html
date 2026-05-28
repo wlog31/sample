@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>계열별 안내 | 선택과목 안내서</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif; background:#f0f4f8; color:#1a202c; }
+
+  /* ── 헤더 ── */
+  .top-bar {
+    background: linear-gradient(135deg,#1e3a5f 0%,#2d6a9f 100%);
+    color:white; padding: 1rem 1.5rem;
+    display:flex; align-items:center; gap:1rem;
+  }
+  .top-bar a { color:rgba(255,255,255,.75); text-decoration:none; font-size:.85rem; }
+  .top-bar a:hover { color:white; }
+  .top-bar h1 { font-size:1.1rem; font-weight:700; flex:1; }
+  .breadcrumb { font-size:.8rem; opacity:.7; }
+
+  /* ── 레이아웃 ── */
+  .layout { display:flex; height:calc(100vh - 56px); overflow:hidden; }
+
+  /* 사이드 패널 */
+  .sidebar {
+    width:260px; flex-shrink:0; background:white;
+    border-right:1px solid #e2e8f0; overflow-y:auto;
+    padding:.5rem 0;
+  }
+  .sidebar-title {
+    font-size:.7rem; font-weight:700; color:#a0aec0;
+    letter-spacing:.08em; text-transform:uppercase;
+    padding:.8rem 1.2rem .4rem;
+  }
+  .series-item {
+    display:flex; align-items:center; gap:.7rem;
+    padding:.65rem 1.2rem; cursor:pointer;
+    transition:background .15s; border-left:3px solid transparent;
+  }
+  .series-item:hover { background:#f7fafc; }
+  .series-item.active { background:#ebf4ff; border-left-color:#2d6a9f; font-weight:600; }
+  .series-icon { font-size:1.3rem; width:1.8rem; text-align:center; }
+  .series-name { font-size:.88rem; }
+
+  /* 검색 */
+  .search-box {
+    padding:.6rem 1rem;
+    border-bottom:1px solid #e2e8f0;
+  }
+  .search-box input {
+    width:100%; padding:.5rem .8rem; border:1px solid #cbd5e0;
+    border-radius:8px; font-size:.85rem; outline:none;
+  }
+  .search-box input:focus { border-color:#2d6a9f; }
+
+  /* 메인 콘텐츠 */
+  .content {
+    flex:1; overflow-y:auto; padding:2rem;
+  }
+
+  /* 빈 상태 */
+  .empty-state {
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    height:100%; color:#a0aec0; gap:1rem; text-align:center;
+  }
+  .empty-state .icon { font-size:4rem; }
+  .empty-state h2 { font-size:1.1rem; color:#718096; }
+  .empty-state p { font-size:.85rem; }
+
+  /* 계열 상세 */
+  .series-header {
+    display:flex; align-items:center; gap:1rem;
+    margin-bottom:1.5rem;
+  }
+  .series-header .big-icon { font-size:2.5rem; }
+  .series-header h2 { font-size:1.6rem; font-weight:800; }
+  .series-header p { font-size:.85rem; color:#718096; margin-top:.2rem; }
+
+  .info-card {
+    background:white; border-radius:14px;
+    box-shadow:0 2px 12px rgba(0,0,0,.07);
+    padding:1.5rem; margin-bottom:1.2rem;
+  }
+  .info-card h3 {
+    font-size:.8rem; font-weight:700; color:#2d6a9f;
+    letter-spacing:.06em; text-transform:uppercase;
+    margin-bottom:.8rem; display:flex; align-items:center; gap:.4rem;
+  }
+  .info-card p { font-size:.88rem; line-height:1.7; color:#4a5568; }
+
+  /* 과목 배지 */
+  .subject-grid { display:flex; flex-wrap:wrap; gap:.5rem; }
+  .subj-badge {
+    background:#edf2f7; color:#2d3748; font-size:.78rem;
+    padding:.3rem .75rem; border-radius:99px; cursor:pointer;
+    transition:background .15s; border:1px solid #e2e8f0;
+  }
+  .subj-badge:hover { background:#2d6a9f; color:white; border-color:#2d6a9f; }
+
+  /* 관련 학과 */
+  .dept-chips { display:flex; flex-wrap:wrap; gap:.5rem; }
+  .dept-chip {
+    background:#e6f0fb; color:#1e4d8c; font-size:.78rem;
+    padding:.3rem .8rem; border-radius:99px;
+    cursor:pointer; border:1px solid #b9d1f0;
+    transition:background .15s;
+  }
+  .dept-chip:hover { background:#2d6a9f; color:white; }
+
+  /* Tip 박스 */
+  .tip-box {
+    background:linear-gradient(135deg,#fffbeb,#fef3c7);
+    border:1px solid #f6d860; border-radius:12px;
+    padding:1.2rem 1.5rem;
+  }
+  .tip-box h3 { color:#b7791f; font-size:.8rem; font-weight:700; margin-bottom:.6rem; }
+  .tip-box p { font-size:.85rem; color:#744210; line-height:1.7; white-space:pre-line; }
+
+  /* 과목 타입 색상 */
+  .badge-type {
+    display:inline-block; font-size:.68rem; font-weight:700;
+    padding:.15rem .5rem; border-radius:4px; margin-right:.3rem;
+  }
+  .badge-general { background:#dbeafe; color:#1e40af; }
+  .badge-career  { background:#dcfce7; color:#166534; }
+  .badge-fusion  { background:#fce7f3; color:#9d174d; }
+
+  /* 과목 구분 헤더 */
+  .subj-section { margin-bottom:1rem; }
+  .subj-section-title {
+    font-size:.75rem; font-weight:700; color:#718096;
+    margin-bottom:.5rem; display:flex; align-items:center; gap:.5rem;
+  }
+  .subj-section-title::after {
+    content:''; flex:1; height:1px; background:#e2e8f0;
+  }
+
+  @media(max-width:700px){
+    .layout { flex-direction:column; height:auto; }
+    .sidebar { width:100%; border-right:none; border-bottom:1px solid #e2e8f0; max-height:200px; }
+    .content { padding:1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div>
+    <a href="../index.html">🏠 홈</a>
+    <span class="breadcrumb"> / 계열별 안내</span>
+  </div>
+  <h1>🎓 계열별 안내</h1>
+</div>
+
+<div class="layout">
+  <!-- 사이드바 -->
+  <aside class="sidebar">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="계열 검색..." oninput="filterSeries()">
+    </div>
+    <div class="sidebar-title">전체 계열 (19)</div>
+    <div id="seriesList"></div>
+  </aside>
+
+  <!-- 콘텐츠 -->
+  <main class="content" id="contentArea">
+    <div class="empty-state">
+      <div class="icon">🎓</div>
+      <h2>계열을 선택해주세요</h2>
+      <p>왼쪽 목록에서 원하는 계열을 클릭하면<br>상세 정보를 확인할 수 있습니다.</p>
+    </div>
+  </main>
+</div>
+
+<script src="../data/data.js"></script>
+<script>
+const S = EDU_DATA.series;
+const STD = EDU_DATA.series_to_depts;
+const ICONS = EDU_DATA.series_icons;
+
+let allSeries = Object.keys(S);
+let activeKey = null;
+
+// 사이드바 목록 렌더
+function renderList(keys) {
+  const el = document.getElementById('seriesList');
+  el.innerHTML = keys.map(k => `
+    <div class="series-item ${k===activeKey?'active':''}" onclick="selectSeries('${k}')">
+      <span class="series-icon">${ICONS[k]||'📁'}</span>
+      <span class="series-name">${k}</span>
+    </div>
+  `).join('');
+}
+
+function filterSeries() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const filtered = q ? allSeries.filter(k=>k.toLowerCase().includes(q)) : allSeries;
+  renderList(filtered);
+}
+
+function selectSeries(key) {
+  activeKey = key;
+  renderList(document.getElementById('searchInput').value.trim().toLowerCase()
+    ? allSeries.filter(k=>k.toLowerCase().includes(document.getElementById('searchInput').value.toLowerCase()))
+    : allSeries);
+  renderDetail(key);
+}
+
+function renderDetail(key) {
+  const info = S[key];
+  const depts = STD[key] || [];
+  const icon = ICONS[key] || '📁';
+
+  // 과목 파싱
+  const general = info.일반선택 ? info.일반선택.split('，').flatMap(s=>s.split(',')).map(s=>s.trim()).filter(Boolean) : [];
+  const career  = info.진로선택 ? info.진로선택.split('，').flatMap(s=>s.split(',')).map(s=>s.trim()).filter(Boolean) : [];
+  const fusion  = info.융합선택 ? info.융합선택.split('，').flatMap(s=>s.split(',')).map(s=>s.trim()).filter(Boolean) : [];
+
+  const deptLink = d => {
+    const exists = EDU_DATA.departments[d];
+    return `<span class="dept-chip" onclick="${exists?`location.href='../departments/index.html?dept=${encodeURIComponent(d)}'`:`alert('학과 정보가 준비 중입니다.')`}">${d}</span>`;
+  };
+
+  document.getElementById('contentArea').innerHTML = `
+    <div class="series-header">
+      <div class="big-icon">${icon}</div>
+      <div>
+        <h2>${key} 계열</h2>
+        <p>관련 학과 ${depts.length}개 · 권장 선택과목 ${general.length+career.length+fusion.length}개</p>
+      </div>
+    </div>
+
+    ${depts.length ? `
+    <div class="info-card">
+      <h3>🏫 관련 학과</h3>
+      <div class="dept-chips">${depts.map(deptLink).join('')}</div>
+    </div>` : ''}
+
+    <div class="info-card">
+      <h3>📚 권장 선택과목</h3>
+
+      ${general.length ? `
+      <div class="subj-section">
+        <div class="subj-section-title"><span class="badge-type badge-general">일반선택</span></div>
+        <div class="subject-grid">
+          ${general.map(s=>`<span class="subj-badge" onclick="goToSubject('${s}')">${s}</span>`).join('')}
+        </div>
+      </div>` : ''}
+
+      ${career.length ? `
+      <div class="subj-section">
+        <div class="subj-section-title"><span class="badge-type badge-career">진로선택</span></div>
+        <div class="subject-grid">
+          ${career.map(s=>`<span class="subj-badge" onclick="goToSubject('${s}')">${s}</span>`).join('')}
+        </div>
+      </div>` : ''}
+
+      ${fusion.length ? `
+      <div class="subj-section">
+        <div class="subj-section-title"><span class="badge-type badge-fusion">융합선택</span></div>
+        <div class="subject-grid">
+          ${fusion.map(s=>`<span class="subj-badge" onclick="goToSubject('${s}')">${s}</span>`).join('')}
+        </div>
+      </div>` : ''}
+    </div>
+
+    ${info.tip ? `
+    <div class="tip-box">
+      <h3>💡 전공 선택을 위한 Tip</h3>
+      <p>${info.tip.replace(/\n/g,'<br>')}</p>
+    </div>` : ''}
+  `;
+}
+
+function goToSubject(name) {
+  window.location.href = `../subjects/index.html?subject=${encodeURIComponent(name)}`;
+}
+
+// 초기 렌더
+renderList(allSeries);
+
+// URL 파라미터로 계열 자동 선택
+const urlSeries = new URLSearchParams(location.search).get('series');
+if (urlSeries && S[urlSeries]) selectSeries(urlSeries);
+</script>
+</body>
+</html>

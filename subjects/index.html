@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>선택과목별 안내 | 선택과목 안내서</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif; background:#f0f4f8; color:#1a202c; }
+
+  .top-bar {
+    background: linear-gradient(135deg,#5c3a1a 0%,#e07b2a 100%);
+    color:white; padding:1rem 1.5rem;
+    display:flex; align-items:center; gap:1rem;
+  }
+  .top-bar a { color:rgba(255,255,255,.75); text-decoration:none; font-size:.85rem; }
+  .top-bar a:hover { color:white; }
+  .top-bar h1 { font-size:1.1rem; font-weight:700; flex:1; }
+  .breadcrumb { font-size:.8rem; opacity:.7; }
+
+  .layout { display:flex; height:calc(100vh - 56px); overflow:hidden; }
+
+  /* 사이드바 */
+  .sidebar {
+    width:260px; flex-shrink:0; background:white;
+    border-right:1px solid #e2e8f0;
+    display:flex; flex-direction:column; overflow:hidden;
+  }
+
+  /* 필터 패널 */
+  .filter-panel { padding:.7rem 1rem; border-bottom:1px solid #e2e8f0; background:#fafafa; }
+  .filter-panel label { font-size:.72rem; font-weight:700; color:#718096; display:block; margin-bottom:.35rem; }
+  .type-btns { display:flex; gap:.3rem; flex-wrap:wrap; }
+  .type-btn {
+    flex:1; min-width:60px; padding:.35rem .3rem; font-size:.72rem;
+    border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;
+    background:white; text-align:center; transition:all .15s;
+    font-family:inherit;
+  }
+  .type-btn.active-general { background:#dbeafe; border-color:#93c5fd; color:#1e40af; font-weight:700; }
+  .type-btn.active-career  { background:#dcfce7; border-color:#86efac; color:#166534; font-weight:700; }
+  .type-btn.active-fusion  { background:#fce7f3; border-color:#f9a8d4; color:#9d174d; font-weight:700; }
+  .type-btn.active-all     { background:#e2e8f0; border-color:#a0aec0; color:#2d3748; font-weight:700; }
+
+  /* 교과군 탭 */
+  .group-tabs { overflow-y:auto; flex-shrink:0; border-bottom:1px solid #e2e8f0; }
+  .group-tab {
+    display:flex; align-items:center; gap:.5rem;
+    padding:.55rem 1rem; cursor:pointer; font-size:.83rem;
+    border-left:3px solid transparent; transition:background .15s;
+  }
+  .group-tab:hover { background:#fef3ec; }
+  .group-tab.active { background:#fff5eb; border-left-color:#e07b2a; font-weight:600; }
+
+  /* 검색 */
+  .search-box { padding:.6rem 1rem; border-bottom:1px solid #e2e8f0; }
+  .search-box input {
+    width:100%; padding:.45rem .75rem; border:1px solid #cbd5e0;
+    border-radius:8px; font-size:.83rem; outline:none;
+  }
+  .search-box input:focus { border-color:#e07b2a; }
+
+  /* 과목 목록 */
+  .subject-list { flex:1; overflow-y:auto; padding:.3rem 0; }
+  .subj-item {
+    padding:.55rem 1rem; cursor:pointer; font-size:.85rem;
+    border-left:3px solid transparent; transition:background .15s;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .subj-item:hover { background:#fef9f5; }
+  .subj-item.active { background:#fff5eb; border-left-color:#e07b2a; font-weight:600; }
+  .subj-item-name { flex:1; }
+  .subj-type-dot {
+    width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-left:.5rem;
+  }
+  .dot-general { background:#93c5fd; }
+  .dot-career  { background:#86efac; }
+  .dot-fusion  { background:#f9a8d4; }
+  .dot-other   { background:#cbd5e0; }
+  .list-count { font-size:.68rem; color:#a0aec0; padding:.3rem 1rem; }
+
+  /* 콘텐츠 */
+  .content { flex:1; overflow-y:auto; padding:2rem; }
+
+  .empty-state {
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    height:100%; color:#a0aec0; gap:1rem; text-align:center;
+  }
+  .empty-state .icon { font-size:4rem; }
+  .empty-state h2 { font-size:1.1rem; color:#718096; }
+
+  /* 과목 상세 */
+  .subj-hero {
+    background: linear-gradient(135deg,#fff5eb,#fde8cc);
+    border-radius:14px; padding:1.5rem 2rem; margin-bottom:1.5rem;
+    border-left:5px solid #e07b2a;
+  }
+  .subj-hero h2 { font-size:1.4rem; font-weight:800; color:#7b341e; }
+  .subj-hero .intro { font-size:.9rem; color:#744210; line-height:1.65; margin-top:.5rem; }
+  .subj-hero .meta { display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.8rem; }
+  .meta-badge {
+    font-size:.72rem; padding:.2rem .65rem; border-radius:6px; font-weight:600;
+  }
+  .meta-type-general { background:#dbeafe; color:#1e40af; }
+  .meta-type-career   { background:#dcfce7; color:#166534; }
+  .meta-type-fusion   { background:#fce7f3; color:#9d174d; }
+  .meta-type-other    { background:#f3f4f6; color:#374151; }
+  .meta-suneung-y { background:#fef3c7; color:#92400e; }
+  .meta-suneung-n { background:#f3f4f6; color:#6b7280; }
+  .meta-eval { background:#f0fdf4; color:#166534; }
+
+  /* 정보 카드 */
+  .info-card {
+    background:white; border-radius:14px;
+    box-shadow:0 2px 12px rgba(0,0,0,.07);
+    padding:1.5rem; margin-bottom:1.2rem;
+  }
+  .info-card h3 {
+    font-size:.78rem; font-weight:700; color:#e07b2a;
+    letter-spacing:.06em; text-transform:uppercase;
+    margin-bottom:.8rem; display:flex; align-items:center; gap:.5rem;
+  }
+  .info-card p { font-size:.88rem; line-height:1.75; color:#4a5568; white-space:pre-line; }
+
+  /* 키워드 */
+  .kw-grid { display:flex; flex-wrap:wrap; gap:.4rem; }
+  .kw-chip {
+    background:#fff5eb; color:#c05621; font-size:.78rem;
+    padding:.25rem .65rem; border-radius:99px; border:1px solid #fbd38d;
+  }
+
+  /* 영역 */
+  .domain-grid { display:flex; flex-wrap:wrap; gap:.4rem; }
+  .domain-chip {
+    background:#f7fafc; color:#4a5568; font-size:.78rem;
+    padding:.25rem .7rem; border-radius:6px; border:1px solid #e2e8f0;
+  }
+
+  /* 추천 학생 */
+  .rec-list { list-style:none; }
+  .rec-list li {
+    font-size:.88rem; color:#4a5568; line-height:1.7;
+    padding:.2rem 0 .2rem 1.2rem; position:relative;
+  }
+  .rec-list li::before { content:'✔'; position:absolute; left:0; color:#e07b2a; font-size:.75rem; top:.25rem; }
+
+  /* 수능 정보 박스 */
+  .suneung-box {
+    display:flex; gap:1.5rem; flex-wrap:wrap;
+  }
+  .suneung-item { flex:1; min-width:120px; text-align:center; }
+  .suneung-item .s-icon { font-size:1.8rem; }
+  .suneung-item .s-label { font-size:.7rem; color:#718096; margin:.3rem 0 .1rem; }
+  .suneung-item .s-val { font-size:.95rem; font-weight:700; }
+
+  @media(max-width:700px){
+    .layout { flex-direction:column; height:auto; }
+    .sidebar { width:100%; border-right:none; border-bottom:1px solid #e2e8f0; max-height:300px; }
+    .content { padding:1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div>
+    <a href="../index.html">🏠 홈</a>
+    <span class="breadcrumb"> / 선택과목별 안내</span>
+  </div>
+  <h1>📋 선택과목별 안내</h1>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <!-- 유형 필터 -->
+    <div class="filter-panel">
+      <label>과목 유형 필터</label>
+      <div class="type-btns">
+        <button class="type-btn active-all" onclick="setType('all',this)">전체</button>
+        <button class="type-btn" onclick="setType('일반선택',this)">일반선택</button>
+        <button class="type-btn" onclick="setType('진로선택',this)">진로선택</button>
+        <button class="type-btn" onclick="setType('융합선택',this)">융합선택</button>
+      </div>
+    </div>
+
+    <!-- 교과군 탭 -->
+    <div class="group-tabs" id="groupTabs"></div>
+
+    <!-- 검색 -->
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="과목명 검색..." oninput="filterSubjects()">
+    </div>
+    <div class="list-count" id="listCount"></div>
+
+    <!-- 과목 목록 -->
+    <div class="subject-list" id="subjList"></div>
+  </aside>
+
+  <main class="content" id="contentArea">
+    <div class="empty-state">
+      <div class="icon">📋</div>
+      <h2>과목을 선택해주세요</h2>
+      <p>왼쪽에서 교과군을 선택하고<br>과목을 클릭하면 상세 정보를 볼 수 있습니다.</p>
+    </div>
+  </main>
+</div>
+
+<script src="../data/data.js"></script>
+<script>
+const SUBS = EDU_DATA.subjects;
+const GROUPS = EDU_DATA.subject_groups;
+
+const GROUP_ICONS = {
+  '국어':'📗','수학':'📐','영어':'🌐','사회':'🗺️','과학':'🔬',
+  '체육':'🏃','예술':'🎨','기술·가정/정보':'💡','제2외국어·한문':'🈳',
+  '교양':'🌿','전문교과':'⭐'
+};
+
+let currentGroup = '전체';
+let currentType  = 'all';
+let activeSubj   = null;
+
+// 교과군 탭 생성
+function renderGroupTabs() {
+  const el = document.getElementById('groupTabs');
+  const groups = ['전체', ...GROUPS];
+  el.innerHTML = groups.map(g => `
+    <div class="group-tab ${g===currentGroup?'active':''}" onclick="setGroup('${g}')">
+      <span>${GROUP_ICONS[g]||'📁'}</span>
+      <span>${g}</span>
+    </div>`).join('');
+}
+
+function setGroup(g) {
+  currentGroup = g;
+  activeSubj = null;
+  renderGroupTabs();
+  filterSubjects();
+  document.getElementById('contentArea').innerHTML = `
+    <div class="empty-state">
+      <div class="icon">📋</div>
+      <h2>과목을 선택해주세요</h2>
+      <p>왼쪽 목록에서 과목을 클릭하세요.</p>
+    </div>`;
+}
+
+function setType(t, btn) {
+  currentType = t;
+  document.querySelectorAll('.type-btn').forEach(b => b.className = 'type-btn');
+  if (t==='all')     btn.classList.add('active-all');
+  else if (t==='일반선택') btn.classList.add('active-general');
+  else if (t==='진로선택') btn.classList.add('active-career');
+  else if (t==='융합선택') btn.classList.add('active-fusion');
+  filterSubjects();
+}
+
+function getFiltered() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  return Object.entries(SUBS).filter(([name, info]) => {
+    if (currentGroup !== '전체' && info.교과군 !== currentGroup) return false;
+    if (currentType  !== 'all'  && info.구분 !== currentType) return false;
+    if (q && !name.toLowerCase().includes(q)) return false;
+    return true;
+  });
+}
+
+function typeDot(t) {
+  if (t==='일반선택') return 'dot-general';
+  if (t==='진로선택') return 'dot-career';
+  if (t==='융합선택') return 'dot-fusion';
+  return 'dot-other';
+}
+
+function filterSubjects() {
+  const items = getFiltered();
+  const el = document.getElementById('subjList');
+  document.getElementById('listCount').textContent = `${items.length}개 과목`;
+
+  if (!items.length) {
+    el.innerHTML = `<div style="padding:1.5rem;text-align:center;color:#a0aec0;font-size:.83rem;">해당 과목이 없습니다.</div>`;
+    return;
+  }
+  el.innerHTML = items.map(([name, info]) => `
+    <div class="subj-item ${name===activeSubj?'active':''}" onclick="selectSubject('${name.replace(/'/g,"\\'")}')">
+      <span class="subj-item-name">${name}</span>
+      <span class="subj-type-dot ${typeDot(info.구분)}"></span>
+    </div>`).join('');
+}
+
+function selectSubject(name) {
+  activeSubj = name;
+  filterSubjects();
+  renderSubject(name);
+}
+
+function typeBadgeClass(t) {
+  if (t==='일반선택') return 'meta-type-general';
+  if (t==='진로선택') return 'meta-type-career';
+  if (t==='융합선택') return 'meta-type-fusion';
+  return 'meta-type-other';
+}
+
+function renderSubject(name) {
+  const info = SUBS[name];
+  if (!info) return;
+
+  const keywords = info.키워드 ? info.키워드.replace(/#/g,'').split(/\s+/).filter(Boolean) : [];
+  const recLines = info.추천학생
+    ? info.추천학생.split(/\n|·|•|∙|･/).map(s=>s.trim()).filter(Boolean)
+    : [];
+  const domains = info.대영역 || [];
+
+  const suneungText = info.수능출제 === 'O' ? '✅ 수능 출제' : info.수능출제 === '-' ? '❌ 미출제' : info.수능출제 || '-';
+  const suneungCls  = info.수능출제 === 'O' ? 'meta-suneung-y' : 'meta-suneung-n';
+
+  document.getElementById('contentArea').innerHTML = `
+    <div class="subj-hero">
+      <h2>📋 ${name}</h2>
+      ${info.한줄소개 ? `<div class="intro">${info.한줄소개}</div>` : ''}
+      <div class="meta">
+        ${info.교과군 ? `<span class="meta-badge meta-type-other">${GROUP_ICONS[info.교과군]||''} ${info.교과군}</span>` : ''}
+        ${info.구분 ? `<span class="meta-badge ${typeBadgeClass(info.구분)}">${info.구분}</span>` : ''}
+        ${info.수능출제 ? `<span class="meta-badge ${suneungCls}">수능 ${info.수능출제==='O'?'출제':'미출제'}</span>` : ''}
+        ${info.평가정보 ? `<span class="meta-badge meta-eval">${info.평가정보.substring(0,20)}</span>` : ''}
+      </div>
+    </div>
+
+    ${keywords.length ? `
+    <div class="info-card">
+      <h3>🏷️ 주요 키워드</h3>
+      <div class="kw-grid">${keywords.map(k=>`<span class="kw-chip">#${k}</span>`).join('')}</div>
+    </div>` : ''}
+
+    ${domains.length ? `
+    <div class="info-card">
+      <h3>📂 주요 학습 영역</h3>
+      <div class="domain-grid">${domains.map(d=>`<span class="domain-chip">${d}</span>`).join('')}</div>
+    </div>` : ''}
+
+    ${recLines.length ? `
+    <div class="info-card">
+      <h3>✅ 이런 학생에게 추천</h3>
+      <ul class="rec-list">${recLines.map(l=>`<li>${l}</li>`).join('')}</ul>
+    </div>` : ''}
+
+    <div class="info-card">
+      <h3>📊 평가 및 수능 정보</h3>
+      <div class="suneung-box">
+        <div class="suneung-item">
+          <div class="s-icon">${info.수능출제==='O'?'📝':'📄'}</div>
+          <div class="s-label">수능 출제 여부</div>
+          <div class="s-val" style="color:${info.수능출제==='O'?'#c05621':'#718096'}">${suneungText}</div>
+        </div>
+        <div class="suneung-item">
+          <div class="s-icon">📋</div>
+          <div class="s-label">과목 유형</div>
+          <div class="s-val">${info.구분||'-'}</div>
+        </div>
+        ${info.평가정보 ? `
+        <div class="suneung-item">
+          <div class="s-icon">⭐</div>
+          <div class="s-label">평가 방법</div>
+          <div class="s-val" style="font-size:.78rem">${info.평가정보}</div>
+        </div>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+// 초기화
+renderGroupTabs();
+filterSubjects();
+
+// URL 파라미터
+const params = new URLSearchParams(location.search);
+const paramSubj = params.get('subject');
+if (paramSubj && SUBS[paramSubj]) {
+  // 해당 교과군으로 자동 이동
+  const info = SUBS[paramSubj];
+  currentGroup = info.교과군 || '전체';
+  renderGroupTabs();
+  filterSubjects();
+  selectSubject(paramSubj);
+  // 해당 항목으로 스크롤
+  setTimeout(() => {
+    const el = document.querySelector('.subj-item.active');
+    if (el) el.scrollIntoView({ block:'center' });
+  }, 100);
+}
+</script>
+</body>
+</html>
