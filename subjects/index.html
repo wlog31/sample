@@ -86,7 +86,12 @@
 
   @media(max-width:700px){
     .layout { flex-direction:column; height:auto; }
-    .sidebar { width:100%; border-right:none; border-bottom:1px solid #e2e8f0; max-height:300px; }
+    .sidebar {
+      width:100%; border-right:none; border-bottom:1px solid #e2e8f0;
+      max-height:none; height:auto;
+    }
+    .group-tabs { max-height:28vw; min-height:60px; }
+    .subject-list { max-height:38vh; min-height:120px; }
     .content { padding:1rem; }
   }
 </style>

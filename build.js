@@ -103,6 +103,7 @@ const COMMON_CSS = `
   .td-chips { }
   .chips-wrap { display:flex; flex-wrap:wrap; gap:.3rem; align-content:flex-start; }
   .subj-chip { background:#edf2f7; color:#2d3748; font-size:.75rem; padding:.2rem .6rem; border-radius:99px; text-decoration:none; border:1px solid #e2e8f0; cursor:pointer; transition:background .15s; display:inline-block; white-space:nowrap; }
+  @media(max-width:600px){ .subj-table { font-size:.72rem; } .subj-chip { white-space:normal; word-break:keep-all; font-size:.7rem; padding:.15rem .4rem; } .td-chips { overflow:hidden; } .th-group { width:56px; } }
   .subj-chip:hover { background:#2d6a9f; color:white; border-color:#2d6a9f; }
   .subj-table tr:last-child td { border-bottom:none; }
   @media(max-width:600px){ .page-content { padding:1rem; } }
