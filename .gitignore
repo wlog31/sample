@@ -1,0 +1,11 @@
+# 원본 데이터 파일 (PDF, Excel) - 깃에 포함하지 않음
+*.pdf
+*.xlsx
+*.xlsm
+*.xls
+
+# OS / 에디터
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
