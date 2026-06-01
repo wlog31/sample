@@ -6,7 +6,7 @@
 <title>학과별 안내 | 선택과목 안내서</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif; background:#f0f4f8; color:#1a202c; }
+  body { font-family: 'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif; background:#f0f4f8; color:#0f172a; }
 
   .top-bar {
     background: linear-gradient(135deg,#1a5c3a 0%,#2d9f6a 100%);
@@ -31,24 +31,24 @@
     border-bottom:1px solid #e2e8f0;
     background:#f7fafc;
   }
-  .series-selector label { font-size:.75rem; font-weight:700; color:#718096; display:block; margin-bottom:.4rem; }
+  .series-selector label { font-size:.75rem; font-weight:700; color:#1f2937; display:block; margin-bottom:.4rem; }
   .series-selector select {
     width:100%; padding:.5rem .8rem; border:1px solid #cbd5e0;
     border-radius:8px; font-size:.88rem; outline:none;
     background:white; cursor:pointer;
   }
-  .series-selector select:focus { border-color:#2d9f6a; }
+  .series-selector select:focus { border-color:#166534; }
 
   .search-box { padding:.6rem 1rem; border-bottom:1px solid #e2e8f0; }
   .search-box input {
     width:100%; padding:.5rem .8rem; border:1px solid #cbd5e0;
     border-radius:8px; font-size:.85rem; outline:none;
   }
-  .search-box input:focus { border-color:#2d9f6a; }
+  .search-box input:focus { border-color:#166534; }
 
   .dept-list { flex:1; overflow-y:auto; padding:.4rem 0; }
   .sidebar-section-title {
-    font-size:.68rem; font-weight:700; color:#a0aec0;
+    font-size:.68rem; font-weight:700; color:#64748b;
     letter-spacing:.08em; padding:.5rem 1rem .2rem;
   }
   .dept-item {
@@ -57,16 +57,16 @@
     transition:background .15s;
   }
   .dept-item:hover { background:#f0fff4; }
-  .dept-item.active { background:#e6f4f0; border-left-color:#2d9f6a; font-weight:600; color:#1a5c3a; }
+  .dept-item.active { background:#e6f4f0; border-left-color:#166534; font-weight:600; color:#1a5c3a; }
 
   .content { flex:1; overflow-y:auto; padding:2rem; }
 
   .empty-state {
     display:flex; flex-direction:column; align-items:center; justify-content:center;
-    height:100%; color:#a0aec0; gap:1rem; text-align:center;
+    height:100%; color:#64748b; gap:1rem; text-align:center;
   }
   .empty-state .icon { font-size:4rem; }
-  .empty-state h2 { font-size:1.1rem; color:#718096; }
+  .empty-state h2 { font-size:1.1rem; color:#1f2937; }
   .empty-state p { font-size:.85rem; }
 
   .dept-header {
@@ -75,7 +75,7 @@
     border-left:5px solid #2d9f6a;
   }
   .dept-header h2 { font-size:1.5rem; font-weight:800; color:#1a5c3a; }
-  .dept-header .meta { font-size:.83rem; color:#2d9f6a; margin-top:.3rem; }
+  .dept-header .meta { font-size:.83rem; color:#166534; margin-top:.3rem; }
 
   .info-card {
     background:white; border-radius:14px;
@@ -83,22 +83,22 @@
     padding:1.5rem; margin-bottom:1.2rem;
   }
   .info-card h3 {
-    font-size:.78rem; font-weight:700; color:#2d9f6a;
+    font-size:.78rem; font-weight:700; color:#166534;
     letter-spacing:.06em; text-transform:uppercase;
     margin-bottom:.8rem; display:flex; align-items:center; gap:.5rem;
   }
-  .info-card p { font-size:.88rem; line-height:1.75; color:#4a5568; white-space:pre-line; }
+  .info-card p { font-size:.88rem; line-height:1.75; color:#1f2937; white-space:pre-line; }
 
   .univ-grid { display:flex; flex-wrap:wrap; gap:.4rem; }
   .univ-chip {
     background:#f7fafc; border:1px solid #e2e8f0;
     border-radius:6px; padding:.25rem .6rem;
-    font-size:.75rem; color:#4a5568;
+    font-size:.75rem; color:#1f2937;
   }
 
   .similar-chip {
     display:inline-block; background:#f0fff4; border:1px solid #9ae6b4;
-    border-radius:6px; padding:.25rem .6rem; font-size:.75rem; color:#276749;
+    border-radius:6px; padding:.25rem .6rem; font-size:.75rem; color:#14532d;
     margin:.2rem; cursor:pointer;
   }
 
@@ -106,18 +106,18 @@
   .subj-table-wrap { overflow-x:auto; border-radius:10px; border:1px solid #e2e8f0; }
   .subj-table { width:100%; border-collapse:collapse; font-size:.82rem; table-layout:fixed; }
   .subj-table th { padding:.6rem .8rem; font-size:.72rem; font-weight:700; letter-spacing:.05em; text-align:left; border-bottom:2px solid #e2e8f0; }
-  .th-group { background:#f7fafc; color:#718096; width:88px; }
+  .th-group { background:#f7fafc; color:#1f2937; width:88px; }
   .th-general { background:#dbeafe; color:#1e40af; width:30%; }
   .th-career  { background:#dcfce7; color:#166534; width:30%; }
   .th-fusion  { background:#fce7f3; color:#9d174d; width:30%; }
   .subj-table td { padding:.5rem .6rem; vertical-align:top; border-bottom:1px solid #f0f4f8; border-right:1px solid #e2e8f0; }
   .subj-table td:last-child { border-right:none; }
-  .td-group { font-size:.73rem; font-weight:700; color:#4a5568; background:#f7fafc; white-space:normal; word-break:keep-all; line-height:1.4; }
+  .td-group { font-size:.73rem; font-weight:700; color:#1f2937; background:#f7fafc; white-space:normal; word-break:keep-all; line-height:1.4; }
   .td-chips { }
   .chips-wrap { display:flex; flex-wrap:wrap; gap:.3rem; align-content:flex-start; }
-  .subj-chip { background:#edf2f7; color:#2d3748; font-size:.75rem; padding:.2rem .6rem; border-radius:99px; text-decoration:none; border:1px solid #e2e8f0; cursor:pointer; transition:background .15s; display:inline-block; white-space:nowrap; }
+  .subj-chip { background:#edf2f7; color:#0f172a; font-size:.75rem; padding:.2rem .6rem; border-radius:99px; text-decoration:none; border:1px solid #e2e8f0; cursor:pointer; transition:background .15s; display:inline-block; white-space:nowrap; }
   @media(max-width:600px){ .subj-table { font-size:.72rem; } .th-group { width:52px; } .subj-chip { white-space:normal; word-break:keep-all; font-size:.68rem; padding:.15rem .4rem; } } .subj-chip { white-space:normal; word-break:keep-all; font-size:.7rem; padding:.15rem .4rem; } .td-chips { overflow:hidden; } .th-group { width:56px; } }
-  .subj-chip:hover { background:#2d6a9f; color:white; border-color:#2d6a9f; }
+  .subj-chip:hover { background:#2d6a9f; color:white; border-color:#1e3a6e; }
   .subj-table tr:last-child td { border-bottom:none; }
 
   @media(max-width:700px){
@@ -149,7 +149,7 @@
       <input type="text" id="searchInput" placeholder="학과 검색..." oninput="filterDepts()">
     </div>
     <div class="dept-list" id="deptList">
-      <div style="padding:1.5rem;text-align:center;color:#a0aec0;font-size:.83rem;">계열을 먼저 선택해주세요</div>
+      <div style="padding:1.5rem;text-align:center;color:#64748b;font-size:.83rem;">계열을 먼저 선택해주세요</div>
     </div>
   </aside>
 
@@ -233,7 +233,7 @@ function buildSubjectTable(generalList, careerList, fusionList, chipClickFn) {
   new Set([...Object.keys(gm),...Object.keys(cm),...Object.keys(fm)]).forEach(g => {
     if (!handled.has(g)) rows.push({label:g, gen:gm[g]||[], car:cm[g]||[], fus:fm[g]||[]});
   });
-  if (!rows.length) return '<p style="color:#a0aec0;font-size:.85rem;">권장 선택과목 정보가 없습니다.</p>';
+  if (!rows.length) return '<p style="color:#64748b;font-size:.85rem;">권장 선택과목 정보가 없습니다.</p>';
   const chip = name => `<span class="subj-chip" onclick="${chipClickFn}('${name.replace(/'/g,"\\'")}') ">${name}</span>`;
   return `<div class="subj-table-wrap"><table class="subj-table">
     <thead><tr>
@@ -287,7 +287,7 @@ function filterDepts() {
   const depts = getDepts();
   const el = document.getElementById('deptList');
   if (!depts.length) {
-    el.innerHTML = `<div style="padding:1.5rem;text-align:center;color:#a0aec0;font-size:.83rem;">
+    el.innerHTML = `<div style="padding:1.5rem;text-align:center;color:#64748b;font-size:.83rem;">
       ${currentSeries ? '해당 계열의 학과 정보가 없습니다.' : '계열을 선택하거나 학과명을 검색하세요.'}</div>`;
     return;
   }
@@ -311,7 +311,7 @@ function renderDept(name) {
   const fusion  = info.융합선택 ? info.융합선택.split(',').map(s=>s.trim()).filter(Boolean) : [];
 
   const univHTML = (str) => {
-    if (!str) return '<span style="color:#a0aec0;font-size:.8rem;">정보 없음</span>';
+    if (!str) return '<span style="color:#64748b;font-size:.8rem;">정보 없음</span>';
     return str.split(',').map(u=>u.trim()).filter(Boolean)
       .map(u=>`<span class="univ-chip">${u}</span>`).join('');
   };
@@ -354,11 +354,11 @@ function renderDept(name) {
     ${(info.개설대학_서울||info.개설대학_수도권||info.개설대학_지방) ? `
     <div class="info-card">
       <h3>🏛️ 개설 대학</h3>
-      ${info.개설대학_서울 ? `<p style="font-size:.75rem;font-weight:700;color:#718096;margin-bottom:.4rem;">서울</p>
+      ${info.개설대학_서울 ? `<p style="font-size:.75rem;font-weight:700;color:#1f2937;margin-bottom:.4rem;">서울</p>
         <div class="univ-grid" style="margin-bottom:.8rem;">${univHTML(info.개설대학_서울)}</div>` : ''}
-      ${info.개설대학_수도권 ? `<p style="font-size:.75rem;font-weight:700;color:#718096;margin-bottom:.4rem;">수도권</p>
+      ${info.개설대학_수도권 ? `<p style="font-size:.75rem;font-weight:700;color:#1f2937;margin-bottom:.4rem;">수도권</p>
         <div class="univ-grid" style="margin-bottom:.8rem;">${univHTML(info.개설대학_수도권)}</div>` : ''}
-      ${info.개설대학_지방 ? `<p style="font-size:.75rem;font-weight:700;color:#718096;margin-bottom:.4rem;">지방</p>
+      ${info.개설대학_지방 ? `<p style="font-size:.75rem;font-weight:700;color:#1f2937;margin-bottom:.4rem;">지방</p>
         <div class="univ-grid">${univHTML(info.개설대학_지방)}</div>` : ''}
     </div>` : ''}
 
