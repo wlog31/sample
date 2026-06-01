@@ -30,7 +30,8 @@
   .subj-table td { padding:.5rem .6rem; vertical-align:top; border-bottom:1px solid #f0f4f8; border-right:1px solid #e2e8f0; }
   .subj-table td:last-child { border-right:none; }
   .td-group { font-size:.73rem; font-weight:700; color:#4a5568; background:#f7fafc; white-space:nowrap; }
-  .td-chips { display:flex; flex-wrap:wrap; gap:.3rem; align-content:flex-start; }
+  .td-chips { }
+  .chips-wrap { display:flex; flex-wrap:wrap; gap:.3rem; align-content:flex-start; }
   .subj-chip { background:#edf2f7; color:#2d3748; font-size:.75rem; padding:.2rem .6rem; border-radius:99px; text-decoration:none; border:1px solid #e2e8f0; cursor:pointer; transition:background .15s; display:inline-block; white-space:nowrap; }
   .subj-chip:hover { background:#2d6a9f; color:white; border-color:#2d6a9f; }
   .subj-table tr:last-child td { border-bottom:none; }
@@ -74,34 +75,34 @@
     </tr></thead>
     <tbody><tr>
       <td class="td-group">국어</td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/국어/화법과_언어/index.html">화법과 언어</a><a class="subj-chip" href="../../subjects/국어/독서와_작문/index.html">독서와 작문</a><a class="subj-chip" href="../../subjects/국어/문학/index.html">문학</a></td>
-      <td class="td-chips"></td>
-      <td class="td-chips"></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/국어/화법과_언어/index.html">화법과 언어</a><a class="subj-chip" href="../../subjects/국어/독서와_작문/index.html">독서와 작문</a><a class="subj-chip" href="../../subjects/국어/문학/index.html">문학</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"></div></td>
+      <td class="td-chips"><div class="chips-wrap"></div></td>
     </tr><tr>
       <td class="td-group">수학</td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/수학/대수/index.html">대수</a><a class="subj-chip" href="../../subjects/수학/확률과_통계/index.html">확률과 통계</a></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/수학/경제_수학/index.html">경제 수학</a></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/수학/실용_통계/index.html">실용 통계</a><a class="subj-chip" href="../../subjects/수학/수학과제_탐구/index.html">수학과제 탐구</a></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/수학/대수/index.html">대수</a><a class="subj-chip" href="../../subjects/수학/확률과_통계/index.html">확률과 통계</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/수학/경제_수학/index.html">경제 수학</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/수학/실용_통계/index.html">실용 통계</a><a class="subj-chip" href="../../subjects/수학/수학과제_탐구/index.html">수학과제 탐구</a></div></td>
     </tr><tr>
       <td class="td-group">영어</td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/영어/영어_독해와_작문/index.html">영어 독해와 작문</a></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/영어/영어_발표와_토론/index.html">영어 발표와 토론</a></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/영어/실생활_영어_회화/index.html">실생활 영어 회화</a><a class="subj-chip" href="../../subjects/영어/세계_문화와_영어/index.html">세계 문화와 영어</a></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/영어/영어_독해와_작문/index.html">영어 독해와 작문</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/영어/영어_발표와_토론/index.html">영어 발표와 토론</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/영어/실생활_영어_회화/index.html">실생활 영어 회화</a><a class="subj-chip" href="../../subjects/영어/세계_문화와_영어/index.html">세계 문화와 영어</a></div></td>
     </tr><tr>
       <td class="td-group">사회</td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/사회/세계시민과_지리/index.html">세계시민과 지리</a><a class="subj-chip" href="../../subjects/사회/세계사/index.html">세계사</a><a class="subj-chip" href="../../subjects/사회/사회와_문화/index.html">사회와 문화</a><a class="subj-chip" href="../../subjects/사회/현대사회와_윤리/index.html">현대사회와 윤리</a></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/사회/정치/index.html">정치</a><a class="subj-chip" href="../../subjects/사회/법과_사회/index.html">법과 사회</a><a class="subj-chip" href="../../subjects/사회/경제/index.html">경제</a><a class="subj-chip" href="../../subjects/사회/윤리와_사상/index.html">윤리와 사상</a><a class="subj-chip" href="../../subjects/사회/국제_관계의_이해/index.html">국제 관계의 이해</a></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/사회/사회문제_탐구/index.html">사회문제 탐구</a><a class="subj-chip" href="../../subjects/사회/금융과_경제생활/index.html">금융과 경제생활</a></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/사회/세계시민과_지리/index.html">세계시민과 지리</a><a class="subj-chip" href="../../subjects/사회/세계사/index.html">세계사</a><a class="subj-chip" href="../../subjects/사회/사회와_문화/index.html">사회와 문화</a><a class="subj-chip" href="../../subjects/사회/현대사회와_윤리/index.html">현대사회와 윤리</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/사회/정치/index.html">정치</a><a class="subj-chip" href="../../subjects/사회/법과_사회/index.html">법과 사회</a><a class="subj-chip" href="../../subjects/사회/경제/index.html">경제</a><a class="subj-chip" href="../../subjects/사회/윤리와_사상/index.html">윤리와 사상</a><a class="subj-chip" href="../../subjects/사회/국제_관계의_이해/index.html">국제 관계의 이해</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/사회/사회문제_탐구/index.html">사회문제 탐구</a><a class="subj-chip" href="../../subjects/사회/금융과_경제생활/index.html">금융과 경제생활</a></div></td>
     </tr><tr>
       <td class="td-group">기술·가정/정보</td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/기술_가정-정보/정보/index.html">정보</a></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/기술_가정-정보/인공지능_기초/index.html">인공지능 기초</a></td>
-      <td class="td-chips"></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기술_가정-정보/정보/index.html">정보</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기술_가정-정보/인공지능_기초/index.html">인공지능 기초</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"></div></td>
     </tr><tr>
       <td class="td-group">기타</td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/기타/미적분I/index.html">미적분I</a><a class="subj-chip" href="../../subjects/기타/영어I/index.html">영어I</a><a class="subj-chip" href="../../subjects/기타/영어II/index.html">영어II</a><a class="subj-chip" href="../../subjects/기타/제2외국어_등/index.html">제2외국어 등</a></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/기타/미적분II/index.html">미적분II</a><a class="subj-chip" href="../../subjects/기타/데이터_과학_등/index.html">데이터 과학 등</a></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/기타/제2외국어_문화_등/index.html">제2외국어 문화 등</a></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/미적분I/index.html">미적분I</a><a class="subj-chip" href="../../subjects/기타/영어I/index.html">영어I</a><a class="subj-chip" href="../../subjects/기타/영어II/index.html">영어II</a><a class="subj-chip" href="../../subjects/기타/제2외국어_등/index.html">제2외국어 등</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/미적분II/index.html">미적분II</a><a class="subj-chip" href="../../subjects/기타/데이터_과학_등/index.html">데이터 과학 등</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/제2외국어_문화_등/index.html">제2외국어 문화 등</a></div></td>
     </tr></tbody>
   </table></div>
   </div>

@@ -30,7 +30,8 @@
   .subj-table td { padding:.5rem .6rem; vertical-align:top; border-bottom:1px solid #f0f4f8; border-right:1px solid #e2e8f0; }
   .subj-table td:last-child { border-right:none; }
   .td-group { font-size:.73rem; font-weight:700; color:#4a5568; background:#f7fafc; white-space:nowrap; }
-  .td-chips { display:flex; flex-wrap:wrap; gap:.3rem; align-content:flex-start; }
+  .td-chips { }
+  .chips-wrap { display:flex; flex-wrap:wrap; gap:.3rem; align-content:flex-start; }
   .subj-chip { background:#edf2f7; color:#2d3748; font-size:.75rem; padding:.2rem .6rem; border-radius:99px; text-decoration:none; border:1px solid #e2e8f0; cursor:pointer; transition:background .15s; display:inline-block; white-space:nowrap; }
   .subj-chip:hover { background:#2d6a9f; color:white; border-color:#2d6a9f; }
   .subj-table tr:last-child td { border-bottom:none; }
@@ -74,29 +75,29 @@
     </tr></thead>
     <tbody><tr>
       <td class="td-group">수학</td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/수학/대수/index.html">대수</a><a class="subj-chip" href="../../subjects/수학/확률과_통계/index.html">확률과 통계</a><a class="subj-chip" href="../../subjects/수학/미적분Ⅰ/index.html">미적분Ⅰ</a></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/수학/기하/index.html">기하</a><a class="subj-chip" href="../../subjects/수학/미적분Ⅱ/index.html">미적분Ⅱ</a><a class="subj-chip" href="../../subjects/수학/인공지능_수학/index.html">인공지능 수학</a></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/수학/실용_통계/index.html">실용 통계</a><a class="subj-chip" href="../../subjects/수학/수학과제_탐구/index.html">수학과제 탐구</a></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/수학/대수/index.html">대수</a><a class="subj-chip" href="../../subjects/수학/확률과_통계/index.html">확률과 통계</a><a class="subj-chip" href="../../subjects/수학/미적분Ⅰ/index.html">미적분Ⅰ</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/수학/기하/index.html">기하</a><a class="subj-chip" href="../../subjects/수학/미적분Ⅱ/index.html">미적분Ⅱ</a><a class="subj-chip" href="../../subjects/수학/인공지능_수학/index.html">인공지능 수학</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/수학/실용_통계/index.html">실용 통계</a><a class="subj-chip" href="../../subjects/수학/수학과제_탐구/index.html">수학과제 탐구</a></div></td>
     </tr><tr>
       <td class="td-group">영어</td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/영어/영어Ⅰ/index.html">영어Ⅰ</a><a class="subj-chip" href="../../subjects/영어/영어Ⅱ/index.html">영어Ⅱ</a><a class="subj-chip" href="../../subjects/영어/영어_독해와_작문/index.html">영어 독해와 작문</a></td>
-      <td class="td-chips"></td>
-      <td class="td-chips"></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/영어/영어Ⅰ/index.html">영어Ⅰ</a><a class="subj-chip" href="../../subjects/영어/영어Ⅱ/index.html">영어Ⅱ</a><a class="subj-chip" href="../../subjects/영어/영어_독해와_작문/index.html">영어 독해와 작문</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"></div></td>
+      <td class="td-chips"><div class="chips-wrap"></div></td>
     </tr><tr>
       <td class="td-group">과학</td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/과학/물리학/index.html">물리학</a></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/과학/역학과_에너지/index.html">역학과 에너지</a><a class="subj-chip" href="../../subjects/과학/전자기와_양자/index.html">전자기와 양자</a></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/과학/융합과학_탐구/index.html">융합과학 탐구</a></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/과학/물리학/index.html">물리학</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/과학/역학과_에너지/index.html">역학과 에너지</a><a class="subj-chip" href="../../subjects/과학/전자기와_양자/index.html">전자기와 양자</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/과학/융합과학_탐구/index.html">융합과학 탐구</a></div></td>
     </tr><tr>
       <td class="td-group">기술·가정/정보</td>
-      <td class="td-chips"></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/기술_가정-정보/로봇과_공학세계/index.html">로봇과 공학세계</a><a class="subj-chip" href="../../subjects/기술_가정-정보/인공지능_기초/index.html">인공지능 기초</a></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/기술_가정-정보/창의_공학_설계/index.html">창의 공학 설계</a></td>
+      <td class="td-chips"><div class="chips-wrap"></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기술_가정-정보/로봇과_공학세계/index.html">로봇과 공학세계</a><a class="subj-chip" href="../../subjects/기술_가정-정보/인공지능_기초/index.html">인공지능 기초</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기술_가정-정보/창의_공학_설계/index.html">창의 공학 설계</a></div></td>
     </tr><tr>
       <td class="td-group">기타</td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/기타/정보_등/index.html">정보 등</a></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/기타/데이터_과학_등/index.html">데이터 과학 등</a></td>
-      <td class="td-chips"><a class="subj-chip" href="../../subjects/기타/소프트웨어와_생활_등/index.html">소프트웨어와 생활 등</a></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/정보_등/index.html">정보 등</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/데이터_과학_등/index.html">데이터 과학 등</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/소프트웨어와_생활_등/index.html">소프트웨어와 생활 등</a></div></td>
     </tr></tbody>
   </table></div>
   </div>
