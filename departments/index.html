@@ -20,14 +20,12 @@
 
   .layout { display:flex; height:calc(100vh - 56px); overflow:hidden; }
 
-  /* 사이드바 */
   .sidebar {
     width:280px; flex-shrink:0; background:white;
     border-right:1px solid #e2e8f0;
     display:flex; flex-direction:column; overflow:hidden;
   }
 
-  /* 계열 선택기 */
   .series-selector {
     padding:.8rem 1rem;
     border-bottom:1px solid #e2e8f0;
@@ -41,7 +39,6 @@
   }
   .series-selector select:focus { border-color:#2d9f6a; }
 
-  /* 검색 */
   .search-box { padding:.6rem 1rem; border-bottom:1px solid #e2e8f0; }
   .search-box input {
     width:100%; padding:.5rem .8rem; border:1px solid #cbd5e0;
@@ -49,7 +46,6 @@
   }
   .search-box input:focus { border-color:#2d9f6a; }
 
-  /* 학과 목록 */
   .dept-list { flex:1; overflow-y:auto; padding:.4rem 0; }
   .sidebar-section-title {
     font-size:.68rem; font-weight:700; color:#a0aec0;
@@ -62,9 +58,7 @@
   }
   .dept-item:hover { background:#f0fff4; }
   .dept-item.active { background:#e6f4f0; border-left-color:#2d9f6a; font-weight:600; color:#1a5c3a; }
-  .dept-count { font-size:.7rem; color:#a0aec0; margin-left:.4rem; }
 
-  /* 콘텐츠 */
   .content { flex:1; overflow-y:auto; padding:2rem; }
 
   .empty-state {
@@ -75,7 +69,6 @@
   .empty-state h2 { font-size:1.1rem; color:#718096; }
   .empty-state p { font-size:.85rem; }
 
-  /* 학과 헤더 */
   .dept-header {
     background: linear-gradient(135deg,#f0fff4,#c6f6d5);
     border-radius:14px; padding:1.5rem 2rem; margin-bottom:1.5rem;
@@ -84,7 +77,6 @@
   .dept-header h2 { font-size:1.5rem; font-weight:800; color:#1a5c3a; }
   .dept-header .meta { font-size:.83rem; color:#2d9f6a; margin-top:.3rem; }
 
-  /* 카드 */
   .info-card {
     background:white; border-radius:14px;
     box-shadow:0 2px 12px rgba(0,0,0,.07);
@@ -97,27 +89,6 @@
   }
   .info-card p { font-size:.88rem; line-height:1.75; color:#4a5568; white-space:pre-line; }
 
-  /* 과목 배지 */
-  .subject-grid { display:flex; flex-wrap:wrap; gap:.5rem; }
-  .subj-badge {
-    background:#e6f4f0; color:#1a5c3a; font-size:.78rem;
-    padding:.28rem .7rem; border-radius:99px; cursor:pointer;
-    border:1px solid #b2dfdb; transition:background .15s;
-  }
-  .subj-badge:hover { background:#2d9f6a; color:white; border-color:#2d9f6a; }
-  .subj-section { margin-bottom:1rem; }
-  .subj-section-title {
-    font-size:.73rem; font-weight:700; color:#718096;
-    margin-bottom:.5rem; display:flex; align-items:center; gap:.5rem;
-  }
-  .subj-section-title::after { content:''; flex:1; height:1px; background:#e2e8f0; }
-
-  .badge-type { display:inline-block; font-size:.68rem; font-weight:700; padding:.15rem .5rem; border-radius:4px; }
-  .badge-general { background:#dbeafe; color:#1e40af; }
-  .badge-career  { background:#dcfce7; color:#166534; }
-  .badge-fusion  { background:#fce7f3; color:#9d174d; }
-
-  /* 대학 목록 */
   .univ-grid { display:flex; flex-wrap:wrap; gap:.4rem; }
   .univ-chip {
     background:#f7fafc; border:1px solid #e2e8f0;
@@ -125,15 +96,26 @@
     font-size:.75rem; color:#4a5568;
   }
 
-  /* 유사학과 */
   .similar-chip {
     display:inline-block; background:#f0fff4; border:1px solid #9ae6b4;
     border-radius:6px; padding:.25rem .6rem; font-size:.75rem; color:#276749;
-    margin:.2rem;
+    margin:.2rem; cursor:pointer;
   }
 
-  /* 진로 목록 */
-  .career-list { font-size:.85rem; color:#4a5568; line-height:1.8; }
+  /* Subject table */
+  .subj-table-wrap { overflow-x:auto; border-radius:10px; border:1px solid #e2e8f0; }
+  .subj-table { width:100%; border-collapse:collapse; font-size:.82rem; }
+  .subj-table th { padding:.6rem .8rem; font-size:.72rem; font-weight:700; letter-spacing:.05em; text-align:left; border-bottom:2px solid #e2e8f0; }
+  .th-group { background:#f7fafc; color:#718096; width:100px; min-width:80px; }
+  .th-general { background:#dbeafe; color:#1e40af; }
+  .th-career  { background:#dcfce7; color:#166534; }
+  .th-fusion  { background:#fce7f3; color:#9d174d; }
+  .subj-table td { padding:.5rem .6rem; vertical-align:top; border-bottom:1px solid #f0f4f8; }
+  .td-group { font-size:.73rem; font-weight:700; color:#4a5568; background:#f7fafc; border-right:1px solid #e2e8f0; white-space:nowrap; }
+  .td-chips { display:flex; flex-wrap:wrap; gap:.3rem; }
+  .subj-chip { background:#edf2f7; color:#2d3748; font-size:.75rem; padding:.2rem .6rem; border-radius:99px; text-decoration:none; border:1px solid #e2e8f0; cursor:pointer; transition:background .15s; display:inline-block; }
+  .subj-chip:hover { background:#2d6a9f; color:white; border-color:#2d6a9f; }
+  .subj-table tr:last-child td { border-bottom:none; }
 
   @media(max-width:700px){
     .layout { flex-direction:column; height:auto; }
@@ -186,6 +168,60 @@ const ICONS = EDU_DATA.series_icons;
 let currentSeries = '';
 let activeDept = null;
 
+const TABLE_ROWS = [
+  { label:'국어',           groups:['국어'] },
+  { label:'수학',           groups:['수학'] },
+  { label:'영어',           groups:['영어'] },
+  { label:'사회',           groups:['사회'] },
+  { label:'과학',           groups:['과학'] },
+  { label:'예체능',         groups:['체육','예술'] },
+  { label:'기술·가정/정보', groups:['기술·가정/정보'] },
+  { label:'제2외국어/한문', groups:['제2외국어·한문'] },
+  { label:'교양',           groups:['교양'] },
+  { label:'전문교과',       groups:['전문교과'] },
+];
+
+function buildSubjectTable(generalList, careerList, fusionList, chipClickFn) {
+  function groupBy(list) {
+    const m = {};
+    list.forEach(name => {
+      const g = (EDU_DATA.subjects[name] && EDU_DATA.subjects[name].교과군) || '기타';
+      if (!m[g]) m[g] = [];
+      m[g].push(name);
+    });
+    return m;
+  }
+  const gm = groupBy(generalList), cm = groupBy(careerList), fm = groupBy(fusionList);
+  const handled = new Set();
+  const rows = [];
+  TABLE_ROWS.forEach(rd => {
+    rd.groups.forEach(g => handled.add(g));
+    const gen = rd.groups.flatMap(g => gm[g]||[]);
+    const car = rd.groups.flatMap(g => cm[g]||[]);
+    const fus = rd.groups.flatMap(g => fm[g]||[]);
+    if (gen.length||car.length||fus.length) rows.push({label:rd.label,gen,car,fus});
+  });
+  new Set([...Object.keys(gm),...Object.keys(cm),...Object.keys(fm)]).forEach(g => {
+    if (!handled.has(g)) rows.push({label:g, gen:gm[g]||[], car:cm[g]||[], fus:fm[g]||[]});
+  });
+  if (!rows.length) return '<p style="color:#a0aec0;font-size:.85rem;">권장 선택과목 정보가 없습니다.</p>';
+  const chip = name => `<span class="subj-chip" onclick="${chipClickFn}('${name.replace(/'/g,"\\'")}') ">${name}</span>`;
+  return `<div class="subj-table-wrap"><table class="subj-table">
+    <thead><tr>
+      <th class="th-group">교과(군)</th>
+      <th class="th-general">일반선택</th>
+      <th class="th-career">진로선택</th>
+      <th class="th-fusion">융합선택</th>
+    </tr></thead>
+    <tbody>${rows.map(r=>`<tr>
+      <td class="td-group">${r.label}</td>
+      <td class="td-chips">${r.gen.map(chip).join('')}</td>
+      <td class="td-chips">${r.car.map(chip).join('')}</td>
+      <td class="td-chips">${r.fus.map(chip).join('')}</td>
+    </tr>`).join('')}</tbody>
+  </table></div>`;
+}
+
 // 계열 셀렉트 채우기
 const sel = document.getElementById('seriesSelect');
 Object.keys(STD).forEach(k => {
@@ -193,6 +229,10 @@ Object.keys(STD).forEach(k => {
   op.value = k; op.textContent = `${ICONS[k]||''} ${k}`;
   sel.appendChild(op);
 });
+
+function slug(name) {
+  return name.replace(/\s+/g,'_').replace(/[·・]/g,'_').replace(/\//g,'-').replace(/[<>:"\\|?*]/g,'');
+}
 
 function onSeriesChange() {
   currentSeries = sel.value;
@@ -230,9 +270,7 @@ function filterDepts() {
 }
 
 function selectDept(name) {
-  activeDept = name;
-  filterDepts();
-  renderDept(name);
+  location.href = `${slug(name)}/index.html`;
 }
 
 function renderDept(name) {
@@ -275,30 +313,7 @@ function renderDept(name) {
     ${(general.length||career.length||fusion.length) ? `
     <div class="info-card">
       <h3>📚 권장 고교 선택과목</h3>
-
-      ${general.length ? `
-      <div class="subj-section">
-        <div class="subj-section-title"><span class="badge-type badge-general">일반선택</span></div>
-        <div class="subject-grid">
-          ${general.map(s=>`<span class="subj-badge" onclick="goToSubject('${s}')">${s}</span>`).join('')}
-        </div>
-      </div>` : ''}
-
-      ${career.length ? `
-      <div class="subj-section">
-        <div class="subj-section-title"><span class="badge-type badge-career">진로선택</span></div>
-        <div class="subject-grid">
-          ${career.map(s=>`<span class="subj-badge" onclick="goToSubject('${s}')">${s}</span>`).join('')}
-        </div>
-      </div>` : ''}
-
-      ${fusion.length ? `
-      <div class="subj-section">
-        <div class="subj-section-title"><span class="badge-type badge-fusion">융합선택</span></div>
-        <div class="subject-grid">
-          ${fusion.map(s=>`<span class="subj-badge" onclick="goToSubject('${s}')">${s}</span>`).join('')}
-        </div>
-      </div>` : ''}
+      ${buildSubjectTable(general, career, fusion, 'goToSubject')}
     </div>` : ''}
 
     ${info.전공기초 ? `
@@ -327,13 +342,19 @@ function renderDept(name) {
     ${similar.length ? `
     <div class="info-card">
       <h3>🔗 유사 학과</h3>
-      <div>${similar.map(s=>`<span class="similar-chip">${s}</span>`).join('')}</div>
+      <div>${similar.map(s=>`<span class="similar-chip" onclick="goToDept('${s.replace(/'/g,"\\'")}') ">${s}</span>`).join('')}</div>
     </div>` : ''}
   `;
 }
 
 function goToSubject(name) {
-  window.location.href = `../subjects/index.html?subject=${encodeURIComponent(name)}`;
+  const sinfo = EDU_DATA.subjects[name];
+  const grp = (sinfo && sinfo.교과군) || '기타';
+  window.location.href = `../subjects/${slug(grp)}/${slug(name)}/index.html`;
+}
+
+function goToDept(name) {
+  window.location.href = `${slug(name)}/index.html`;
 }
 
 // URL 파라미터 처리
@@ -341,20 +362,13 @@ const params = new URLSearchParams(location.search);
 const paramDept = params.get('dept');
 const paramSeries = params.get('series');
 
-if (paramSeries && STD[paramSeries]) {
+if (paramDept && D[paramDept]) {
+  // redirect to individual page
+  location.href = `${slug(paramDept)}/index.html`;
+} else if (paramSeries && STD[paramSeries]) {
   sel.value = paramSeries;
   currentSeries = paramSeries;
   filterDepts();
-}
-if (paramDept && D[paramDept]) {
-  // 계열 자동 탐색
-  if (!currentSeries) {
-    for (const [s, depts] of Object.entries(STD)) {
-      if (depts.includes(paramDept)) { sel.value = s; currentSeries = s; break; }
-    }
-  }
-  filterDepts();
-  selectDept(paramDept);
 }
 </script>
 </body>

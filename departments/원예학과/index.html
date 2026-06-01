@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>원예학과 | 학과별 안내 | 선택과목 안내서</title>
+<style>
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif; background:#f0f4f8; color:#1a202c; }
+  .top-bar { color:white; padding:1rem 1.5rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+  .top-bar a { color:rgba(255,255,255,.75); text-decoration:none; font-size:.85rem; }
+  .top-bar a:hover { color:white; }
+  .top-bar h1 { font-size:1.1rem; font-weight:700; flex:1; }
+  .breadcrumb { font-size:.8rem; opacity:.7; }
+  .page-content { max-width:860px; margin:0 auto; padding:2rem 1.5rem; }
+  .info-card { background:white; border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,.07); padding:1.5rem; margin-bottom:1.2rem; }
+  .info-card h3 { font-size:.78rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:.8rem; display:flex; align-items:center; gap:.5rem; }
+  .info-card p { font-size:.88rem; line-height:1.75; color:#4a5568; white-space:pre-line; }
+  .univ-grid { display:flex; flex-wrap:wrap; gap:.4rem; }
+  .univ-chip { background:#f7fafc; border:1px solid #e2e8f0; border-radius:6px; padding:.25rem .6rem; font-size:.75rem; color:#4a5568; }
+  .similar-chip { display:inline-block; border-radius:6px; padding:.25rem .6rem; font-size:.75rem; margin:.2rem; text-decoration:none; }
+  .subj-table-wrap { overflow-x:auto; border-radius:10px; border:1px solid #e2e8f0; }
+  .subj-table { width:100%; border-collapse:collapse; font-size:.82rem; }
+  .subj-table th { padding:.6rem .8rem; font-size:.72rem; font-weight:700; letter-spacing:.05em; text-align:left; border-bottom:2px solid #e2e8f0; }
+  .th-group { background:#f7fafc; color:#718096; width:100px; min-width:80px; }
+  .th-general { background:#dbeafe; color:#1e40af; }
+  .th-career  { background:#dcfce7; color:#166534; }
+  .th-fusion  { background:#fce7f3; color:#9d174d; }
+  .subj-table td { padding:.5rem .6rem; vertical-align:top; border-bottom:1px solid #f0f4f8; }
+  .td-group { font-size:.73rem; font-weight:700; color:#4a5568; background:#f7fafc; border-right:1px solid #e2e8f0; white-space:nowrap; }
+  .td-chips { display:flex; flex-wrap:wrap; gap:.3rem; }
+  .subj-chip { background:#edf2f7; color:#2d3748; font-size:.75rem; padding:.2rem .6rem; border-radius:99px; text-decoration:none; border:1px solid #e2e8f0; cursor:pointer; transition:background .15s; display:inline-block; }
+  .subj-chip:hover { background:#2d6a9f; color:white; border-color:#2d6a9f; }
+  .subj-table tr:last-child td { border-bottom:none; }
+  @media(max-width:600px){ .page-content { padding:1rem; } }
+
+.top-bar { background: linear-gradient(135deg,#1a5c3a 0%,#2d9f6a 100%); }
+.dept-header { background: linear-gradient(135deg,#f0fff4,#c6f6d5); border-radius:14px; padding:1.5rem 2rem; margin-bottom:1.5rem; border-left:5px solid #2d9f6a; }
+.dept-header h2 { font-size:1.5rem; font-weight:800; color:#1a5c3a; }
+.dept-header .meta { font-size:.83rem; color:#2d9f6a; margin-top:.3rem; }
+.info-card h3 { color:#2d9f6a; }
+.similar-chip { background:#f0fff4; border:1px solid #9ae6b4; color:#276749; }
+.similar-chip:hover { background:#2d9f6a; color:white; }
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <div>
+    <a href="../../index.html">🏠 홈</a>
+    <span class="breadcrumb"> / <a href="../index.html" style="color:rgba(255,255,255,.75);text-decoration:none;">학과별 안내</a> / 원예학과</span>
+  </div>
+  <h1>🏫 원예학과</h1>
+</div>
+<div class="page-content">
+  <div class="dept-header">
+    <h2>🏫 원예학과</h2>
+    <div class="meta">18개 권장 선택과목</div>
+  </div>
+
+  <div class="info-card"><h3>📌 학과 소개</h3><p>원예 작물 재배에 대해 연구함으로써 자연환경을 관리, 이용할 수 있는 이론과 기술을 배우는 학문으로 숲의 산림 자원과 과수, 채소, 화훼 등 원예작물의 생산에서 활용까지 전 과정을 통해 자연환경을 아름답고 쾌적하게 조성하는 전문 인력을 양성하는 학과이다.</p></div>
+  <div class="info-card"><h3>✅ 이런 학생에게 추천</h3><p>•자연을 좋아하고 나무와 꽃, 식물 등에 관심이 있는 학생<br>•지구온난화, 친환경적‧ 무공해적인 삶 등의 자연 및 생활 환경 문제에도 관심이 많은 학생<br>•생명과학, 화학, 물리학 등의 과목에 흥미가 있고 공학 및 예술에 대한 관심이 있는 학생</p></div>
+
+  
+  <div class="info-card">
+    <h3>📚 권장 고교 선택과목</h3>
+    <div class="subj-table-wrap"><table class="subj-table">
+    <thead><tr>
+      <th class="th-group">교과(군)</th>
+      <th class="th-general">일반선택</th>
+      <th class="th-career">진로선택</th>
+      <th class="th-fusion">융합선택</th>
+    </tr></thead>
+    <tbody><tr>
+      <td class="td-group">수학</td>
+      <td class="td-chips"><a class="subj-chip" href="../../subjects/수학/대수/index.html">대수</a><a class="subj-chip" href="../../subjects/수학/미적분Ⅰ/index.html">미적분Ⅰ</a><a class="subj-chip" href="../../subjects/수학/확률과_통계/index.html">확률과 통계</a></td>
+      <td class="td-chips"><a class="subj-chip" href="../../subjects/수학/미적분Ⅱ/index.html">미적분Ⅱ</a><a class="subj-chip" href="../../subjects/수학/인공지능_수학/index.html">인공지능 수학</a></td>
+      <td class="td-chips"><a class="subj-chip" href="../../subjects/수학/실용_통계/index.html">실용 통계</a></td>
+    </tr><tr>
+      <td class="td-group">사회</td>
+      <td class="td-chips"></td>
+      <td class="td-chips"><a class="subj-chip" href="../../subjects/사회/한국지리_탐구/index.html">한국지리 탐구</a></td>
+      <td class="td-chips"></td>
+    </tr><tr>
+      <td class="td-group">과학</td>
+      <td class="td-chips"><a class="subj-chip" href="../../subjects/과학/화학/index.html">화학</a><a class="subj-chip" href="../../subjects/과학/생명과학/index.html">생명과학</a><a class="subj-chip" href="../../subjects/과학/지구과학/index.html">지구과학</a></td>
+      <td class="td-chips"><a class="subj-chip" href="../../subjects/과학/물질과_에너지/index.html">물질과 에너지</a><a class="subj-chip" href="../../subjects/과학/화학_반응의_세계/index.html">화학 반응의 세계</a><a class="subj-chip" href="../../subjects/과학/세포와_물질대사/index.html">세포와 물질대사</a><a class="subj-chip" href="../../subjects/과학/생물의_유전/index.html">생물의 유전</a><a class="subj-chip" href="../../subjects/과학/지구시스템과학/index.html">지구시스템과학</a></td>
+      <td class="td-chips"></td>
+    </tr><tr>
+      <td class="td-group">기타</td>
+      <td class="td-chips"><a class="subj-chip" href="../../subjects/기타/정보_등/index.html">정보 등</a></td>
+      <td class="td-chips"><a class="subj-chip" href="../../subjects/기타/생활과학_탐구_등/index.html">생활과학 탐구 등</a></td>
+      <td class="td-chips"><a class="subj-chip" href="../../subjects/기타/기후변화와_환경생태_등/index.html">기후변화와 환경생태 등</a></td>
+    </tr></tbody>
+  </table></div>
+  </div>
+
+  <div class="info-card"><h3>📖 주요 전공 교과목</h3><p>전공 기초: 채소원예학, 작물생리학, 과수원예학, 조경식물학, 화훼원예학, 식물육종학, 재배학원론, 유기화학 등<br>전공 심화: 시설원예학, 종묘생산학, 원예유전자학, 원예상품학, 조경계획 및 설계, 특수화훼학, 화훼장식론, 원예작물생리학,토양비료학, 생화학, 식물생장조절학, 채소/화훼/과수원예학 및 실습, 원예식물생태학, 분자생물학, 농업교재연구 및 지도법, 식물유전체학, 과수생산학, 식물조직배양학, 원예생명공학, 생물통계학, 원예자원식물학, 원예치료, 친환경농업 등</p></div>
+
+  
+  <div class="info-card">
+    <h3>🏛️ 개설 대학</h3>
+    <p style="font-size:.75rem;font-weight:700;color:#718096;margin-bottom:.4rem;">서울</p><div class="univ-grid" style="margin-bottom:.8rem;"><span class="univ-chip">건국대</span><span class="univ-chip">삼육대</span><span class="univ-chip">서울대</span><span class="univ-chip">서울시립대</span><span class="univ-chip">서울여대 등</span></div>
+    <p style="font-size:.75rem;font-weight:700;color:#718096;margin-bottom:.4rem;">수도권</p><div class="univ-grid" style="margin-bottom:.8rem;"><span class="univ-chip">경희대</span><span class="univ-chip">단국대</span><span class="univ-chip">한경국립대 등</span></div>
+    <p style="font-size:.75rem;font-weight:700;color:#718096;margin-bottom:.4rem;">지방</p><div class="univ-grid"><span class="univ-chip">강원대</span><span class="univ-chip">경북대</span><span class="univ-chip">경상국립대</span><span class="univ-chip">국립공주대</span><span class="univ-chip">부산대</span><span class="univ-chip">전남대</span><span class="univ-chip">전북대</span><span class="univ-chip">제주대</span><span class="univ-chip">충남대</span><span class="univ-chip">충북대 등</span></div>
+  </div>
+
+  <div class="info-card"><h3>🚀 졸업 후 진로</h3><p>∙ 연구 분야(생명과학연구원, 생명과학시험원, 임업기술자, 정밀농업기술자, 농업어업시험원, 원예학 연구원, 식물병리학자, 식물생명공학 연구원 등<br>∙ 농림어업,공예 분야(조경원(원예사 포함), 플로리스트, 식물재배자, 도시농업 전문가 등<br>∙ 공학기술자 분야(조경기술자, 친환경농산물인증심사원, 농산물품질관리원, 스마트팜 전문가 등<br>∙ 사무 분야(6차산업컨설턴트, 공무원(임업직), 스마트팜구축가, 귀농귀촌플래너, 농업직 공무원(일반농업/원예계열), 농업 컨설턴트, 농협 직원 등<br>∙ 교육 분야(농업 교사, 원예 교사, 원예 교육기관 강사, 식물 콘텐츠 기획자 등<br>∙ 보건 분야(원예치료사, 산림치유지도사 등</p></div>
+
+  
+  <div class="info-card">
+    <h3>🔗 유사 학과</h3>
+    <div><span class="similar-chip">원예환경전공</span><span class="similar-chip">산림과학부</span><span class="similar-chip">산림조경학과</span><span class="similar-chip">스마트팜과학과</span><span class="similar-chip">식물생산과학부(원예생명공학전공)</span><span class="similar-chip">원예생명과학과</span><span class="similar-chip">원예생명공학과</span><span class="similar-chip">원예생명조경학과</span><span class="similar-chip">환경디자인원예학과</span><span class="similar-chip">환경원예학과 등</span></div>
+  </div>
+</div>
+</body>
+</html>

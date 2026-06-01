@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>지구과학 | 선택과목 안내 | 선택과목 안내서</title>
+<style>
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif; background:#f0f4f8; color:#1a202c; }
+  .top-bar { color:white; padding:1rem 1.5rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+  .top-bar a { color:rgba(255,255,255,.75); text-decoration:none; font-size:.85rem; }
+  .top-bar a:hover { color:white; }
+  .top-bar h1 { font-size:1.1rem; font-weight:700; flex:1; }
+  .breadcrumb { font-size:.8rem; opacity:.7; }
+  .page-content { max-width:860px; margin:0 auto; padding:2rem 1.5rem; }
+  .info-card { background:white; border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,.07); padding:1.5rem; margin-bottom:1.2rem; }
+  .info-card h3 { font-size:.78rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:.8rem; display:flex; align-items:center; gap:.5rem; }
+  .info-card p { font-size:.88rem; line-height:1.75; color:#4a5568; white-space:pre-line; }
+  .univ-grid { display:flex; flex-wrap:wrap; gap:.4rem; }
+  .univ-chip { background:#f7fafc; border:1px solid #e2e8f0; border-radius:6px; padding:.25rem .6rem; font-size:.75rem; color:#4a5568; }
+  .similar-chip { display:inline-block; border-radius:6px; padding:.25rem .6rem; font-size:.75rem; margin:.2rem; text-decoration:none; }
+  .subj-table-wrap { overflow-x:auto; border-radius:10px; border:1px solid #e2e8f0; }
+  .subj-table { width:100%; border-collapse:collapse; font-size:.82rem; }
+  .subj-table th { padding:.6rem .8rem; font-size:.72rem; font-weight:700; letter-spacing:.05em; text-align:left; border-bottom:2px solid #e2e8f0; }
+  .th-group { background:#f7fafc; color:#718096; width:100px; min-width:80px; }
+  .th-general { background:#dbeafe; color:#1e40af; }
+  .th-career  { background:#dcfce7; color:#166534; }
+  .th-fusion  { background:#fce7f3; color:#9d174d; }
+  .subj-table td { padding:.5rem .6rem; vertical-align:top; border-bottom:1px solid #f0f4f8; }
+  .td-group { font-size:.73rem; font-weight:700; color:#4a5568; background:#f7fafc; border-right:1px solid #e2e8f0; white-space:nowrap; }
+  .td-chips { display:flex; flex-wrap:wrap; gap:.3rem; }
+  .subj-chip { background:#edf2f7; color:#2d3748; font-size:.75rem; padding:.2rem .6rem; border-radius:99px; text-decoration:none; border:1px solid #e2e8f0; cursor:pointer; transition:background .15s; display:inline-block; }
+  .subj-chip:hover { background:#2d6a9f; color:white; border-color:#2d6a9f; }
+  .subj-table tr:last-child td { border-bottom:none; }
+  @media(max-width:600px){ .page-content { padding:1rem; } }
+
+.top-bar { background: linear-gradient(135deg,#5c3a1a 0%,#e07b2a 100%); }
+.info-card h3 { color:#e07b2a; }
+.subj-hero { background: linear-gradient(135deg,#fff5eb,#fde8cc); border-radius:14px; padding:1.5rem 2rem; margin-bottom:1.5rem; border-left:5px solid #e07b2a; }
+.subj-hero h2 { font-size:1.4rem; font-weight:800; color:#7b341e; }
+.subj-hero .intro { font-size:.9rem; color:#744210; line-height:1.65; margin-top:.5rem; }
+.subj-hero .meta { display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.8rem; }
+.meta-badge { font-size:.72rem; padding:.2rem .65rem; border-radius:6px; font-weight:600; }
+.meta-type-general { background:#dbeafe; color:#1e40af; }
+.meta-type-career   { background:#dcfce7; color:#166534; }
+.meta-type-fusion   { background:#fce7f3; color:#9d174d; }
+.meta-type-other    { background:#f3f4f6; color:#374151; }
+.meta-suneung-y { background:#fef3c7; color:#92400e; }
+.meta-suneung-n { background:#f3f4f6; color:#6b7280; }
+.meta-eval { background:#f0fdf4; color:#166534; }
+.kw-grid { display:flex; flex-wrap:wrap; gap:.4rem; }
+.kw-chip { background:#fff5eb; color:#c05621; font-size:.78rem; padding:.25rem .65rem; border-radius:99px; border:1px solid #fbd38d; }
+.domain-grid { display:flex; flex-wrap:wrap; gap:.4rem; }
+.domain-chip { background:#f7fafc; color:#4a5568; font-size:.78rem; padding:.25rem .7rem; border-radius:6px; border:1px solid #e2e8f0; }
+.rec-list { list-style:none; }
+.rec-list li { font-size:.88rem; color:#4a5568; line-height:1.7; padding:.2rem 0 .2rem 1.2rem; position:relative; }
+.rec-list li::before { content:'✔'; position:absolute; left:0; color:#e07b2a; font-size:.75rem; top:.25rem; }
+.suneung-box { display:flex; gap:1.5rem; flex-wrap:wrap; }
+.suneung-item { flex:1; min-width:120px; text-align:center; }
+.suneung-item .s-icon { font-size:1.8rem; }
+.suneung-item .s-label { font-size:.7rem; color:#718096; margin:.3rem 0 .1rem; }
+.suneung-item .s-val { font-size:.95rem; font-weight:700; }
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <div>
+    <a href="../../../index.html">🏠 홈</a>
+    <span class="breadcrumb"> / <a href="../../index.html" style="color:rgba(255,255,255,.75);text-decoration:none;">선택과목별 안내</a> / 과학 / 지구과학</span>
+  </div>
+  <h1>📋 지구과학</h1>
+</div>
+<div class="page-content">
+  <div class="subj-hero">
+    <h2>🔬 지구과학</h2>
+    <div class="intro">일상생활에서 접하는 자연현상과 우주에 관한 호기심에 대해 과학적으로 접근하는 과목입니다.</div>
+    <div class="meta">
+      <span class="meta-badge meta-type-other">🔬 과학</span>
+      <span class="meta-badge meta-type-general">일반선택</span>
+      <span class="meta-badge meta-suneung-n">수능 미출제</span>
+      <span class="meta-badge meta-eval">성취도(A~E) / 석차 등급 5등급</span>
+    </div>
+  </div>
+
+  <div class="info-card"><h3>🏷️ 주요 키워드</h3><div class="kw-grid"><span class="kw-chip">#기후시스템</span><span class="kw-chip">#지질공원</span><span class="kw-chip">#별</span><span class="kw-chip">#자료분석및해석</span><span class="kw-chip">#호기심과추론</span><span class="kw-chip">#과학의유용성</span></div></div>
+  <div class="info-card"><h3>📂 주요 학습 영역</h3><div class="domain-grid"><span class="domain-chip">대기와 해양의 상호작용</span><span class="domain-chip">지구의 역사와 한반도의 암석</span><span class="domain-chip">태양계 천체와 별과 우주의 진화</span></div></div>
+  <div class="info-card"><h3>✅ 이런 학생에게 추천</h3><ul class="rec-list"><li>자연재해와 기후위기 등 현실 문제의 원인을 자료로 분석하고, 대응 방안을 설계해 보고 싶은 학생</li><li>다양한 관측 자료를 바탕으로 대기</li><li>해양</li><li>지질</li><li>우주 시스템의 상호작용을 통합적으로 탐구하고 싶은 학생</li></ul></div>
+
+  <div class="info-card">
+    <h3>📊 평가 및 수능 정보</h3>
+    <div class="suneung-box">
+      <div class="suneung-item">
+        <div class="s-icon">📄</div>
+        <div class="s-label">수능 출제 여부</div>
+        <div class="s-val" style="color:#718096">❌ 미출제</div>
+      </div>
+      <div class="suneung-item">
+        <div class="s-icon">📋</div>
+        <div class="s-label">과목 유형</div>
+        <div class="s-val">일반선택</div>
+      </div>
+      <div class="suneung-item"><div class="s-icon">⭐</div><div class="s-label">평가 방법</div><div class="s-val" style="font-size:.78rem">성취도(A~E) / 석차 등급 5등급</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
