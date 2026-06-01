@@ -4,127 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>학과별 안내 | 선택과목 안내서</title>
+<link rel="stylesheet" href="../styles/main.css">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif; background:#f0f4f8; color:#0f172a; }
-
-  .top-bar {
-    background: linear-gradient(135deg,#1a5c3a 0%,#2d9f6a 100%);
-    color:white; padding:1rem 1.5rem;
-    display:flex; align-items:center; gap:1rem;
-  }
-  .top-bar a { color:rgba(255,255,255,.75); text-decoration:none; font-size:.85rem; }
-  .top-bar a:hover { color:white; }
-  .top-bar h1 { font-size:1.1rem; font-weight:700; flex:1; }
-  .breadcrumb { font-size:.8rem; opacity:.7; }
-
-  .layout { display:flex; height:calc(100vh - 56px); overflow:hidden; }
-
-  .sidebar {
-    width:280px; flex-shrink:0; background:white;
-    border-right:1px solid #e2e8f0;
-    display:flex; flex-direction:column; overflow:hidden;
-  }
-
-  .series-selector {
-    padding:.8rem 1rem;
-    border-bottom:1px solid #e2e8f0;
-    background:#f7fafc;
-  }
-  .series-selector label { font-size:.75rem; font-weight:700; color:#1f2937; display:block; margin-bottom:.4rem; }
-  .series-selector select {
-    width:100%; padding:.5rem .8rem; border:1px solid #cbd5e0;
-    border-radius:8px; font-size:.88rem; outline:none;
-    background:white; cursor:pointer;
-  }
+  :root { --c-primary:#1a5c3a; --c-secondary:#166534; --c-accent:#166534;
+    --c-header-grad:linear-gradient(135deg,#1a5c3a 0%,#166534 100%);
+    --c-hero-grad:linear-gradient(135deg,#f0fff4,#c6f6d5);
+    --c-hero-border:#166534; --c-chip-hover:#166534;
+    --c-active-bg:#e6f4f0; --c-active-border:#166534; --c-input-focus:#166534; }
+  /* 사이드바 전용 */
+  .series-selector { padding:.8rem 1rem; border-bottom:1px solid #e2e8f0; background:#f7fafc; }
+  .series-selector label { font-size:.75rem; font-weight:700; color:#374151; display:block; margin-bottom:.4rem; }
+  .series-selector select { width:100%; padding:.5rem .8rem; border:1px solid #cbd5e0; border-radius:8px; font-size:.88rem; outline:none; background:white; cursor:pointer; font-family:inherit; }
   .series-selector select:focus { border-color:#166534; }
-
-  .search-box { padding:.6rem 1rem; border-bottom:1px solid #e2e8f0; }
-  .search-box input {
-    width:100%; padding:.5rem .8rem; border:1px solid #cbd5e0;
-    border-radius:8px; font-size:.85rem; outline:none;
-  }
-  .search-box input:focus { border-color:#166534; }
-
   .dept-list { flex:1; overflow-y:auto; padding:.4rem 0; }
-  .sidebar-section-title {
-    font-size:.68rem; font-weight:700; color:#64748b;
-    letter-spacing:.08em; padding:.5rem 1rem .2rem;
-  }
-  .dept-item {
-    padding:.6rem 1.2rem; cursor:pointer;
-    border-left:3px solid transparent; font-size:.87rem;
-    transition:background .15s;
-  }
-  .dept-item:hover { background:#f0fff4; }
-  .dept-item.active { background:#e6f4f0; border-left-color:#166534; font-weight:600; color:#1a5c3a; }
-
-  .content { flex:1; overflow-y:auto; padding:2rem; }
-
-  .empty-state {
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    height:100%; color:#64748b; gap:1rem; text-align:center;
-  }
-  .empty-state .icon { font-size:4rem; }
-  .empty-state h2 { font-size:1.1rem; color:#1f2937; }
-  .empty-state p { font-size:.85rem; }
-
-  .dept-header {
-    background: linear-gradient(135deg,#f0fff4,#c6f6d5);
-    border-radius:14px; padding:1.5rem 2rem; margin-bottom:1.5rem;
-    border-left:5px solid #2d9f6a;
-  }
-  .dept-header h2 { font-size:1.5rem; font-weight:800; color:#1a5c3a; }
-  .dept-header .meta { font-size:.83rem; color:#166534; margin-top:.3rem; }
-
-  .info-card {
-    background:white; border-radius:14px;
-    box-shadow:0 2px 12px rgba(0,0,0,.07);
-    padding:1.5rem; margin-bottom:1.2rem;
-  }
-  .info-card h3 {
-    font-size:.78rem; font-weight:700; color:#166534;
-    letter-spacing:.06em; text-transform:uppercase;
-    margin-bottom:.8rem; display:flex; align-items:center; gap:.5rem;
-  }
-  .info-card p { font-size:.88rem; line-height:1.75; color:#1f2937; white-space:pre-line; }
-
-  .univ-grid { display:flex; flex-wrap:wrap; gap:.4rem; }
-  .univ-chip {
-    background:#f7fafc; border:1px solid #e2e8f0;
-    border-radius:6px; padding:.25rem .6rem;
-    font-size:.75rem; color:#1f2937;
-  }
-
-  .similar-chip {
-    display:inline-block; background:#f0fff4; border:1px solid #9ae6b4;
-    border-radius:6px; padding:.25rem .6rem; font-size:.75rem; color:#14532d;
-    margin:.2rem; cursor:pointer;
-  }
-
-  /* Subject table */
-  .subj-table-wrap { overflow-x:auto; border-radius:10px; border:1px solid #e2e8f0; }
-  .subj-table { width:100%; border-collapse:collapse; font-size:.82rem; table-layout:fixed; }
-  .subj-table th { padding:.6rem .8rem; font-size:.72rem; font-weight:700; letter-spacing:.05em; text-align:left; border-bottom:2px solid #e2e8f0; }
-  .th-group { background:#f7fafc; color:#1f2937; width:88px; }
-  .th-general { background:#dbeafe; color:#1e40af; width:30%; }
-  .th-career  { background:#dcfce7; color:#166534; width:30%; }
-  .th-fusion  { background:#fce7f3; color:#9d174d; width:30%; }
-  .subj-table td { padding:.5rem .6rem; vertical-align:top; border-bottom:1px solid #f0f4f8; border-right:1px solid #e2e8f0; }
-  .subj-table td:last-child { border-right:none; }
-  .td-group { font-size:.73rem; font-weight:700; color:#1f2937; background:#f7fafc; white-space:normal; word-break:keep-all; line-height:1.4; }
-  .td-chips { }
-  .chips-wrap { display:flex; flex-wrap:wrap; gap:.3rem; align-content:flex-start; }
-  .subj-chip { background:#edf2f7; color:#0f172a; font-size:.75rem; padding:.2rem .6rem; border-radius:99px; text-decoration:none; border:1px solid #e2e8f0; cursor:pointer; transition:background .15s; display:inline-block; white-space:nowrap; }
-  @media(max-width:600px){ .subj-table { font-size:.72rem; } .th-group { width:52px; } .subj-chip { white-space:normal; word-break:keep-all; font-size:.68rem; padding:.15rem .4rem; } } .subj-chip { white-space:normal; word-break:keep-all; font-size:.7rem; padding:.15rem .4rem; } .td-chips { overflow:hidden; } .th-group { width:56px; } }
-  .subj-chip:hover { background:#2d6a9f; color:white; border-color:#1e3a6e; }
-  .subj-table tr:last-child td { border-bottom:none; }
-
-  @media(max-width:700px){
-    .layout { flex-direction:column; height:auto; }
-    .sidebar { width:100%; border-right:none; border-bottom:1px solid #e2e8f0; max-height:280px; }
-    .content { padding:1rem; }
-  }
+  .sidebar-section-title { font-size:.68rem; font-weight:700; color:#64748b; letter-spacing:.08em; padding:.5rem 1rem .2rem; }
+  .dept-count { font-size:.7rem; color:#64748b; margin-left:.4rem; }
+  /* 학과 구분 섹션 */
+  .subj-section { margin-bottom:1rem; }
+  .subj-section-title { font-size:.73rem; font-weight:700; color:#374151; margin-bottom:.5rem; display:flex; align-items:center; gap:.5rem; }
+  .subj-section-title::after { content:""; flex:1; height:1px; background:#e2e8f0; }
+  .subject-grid { display:flex; flex-wrap:wrap; gap:.5rem; }
+  .subj-badge { background:#e6f4f0; color:#14532d; font-size:.78rem; padding:.28rem .7rem; border-radius:99px; cursor:pointer; border:1px solid #b2dfdb; transition:background .15s; }
+  .subj-badge:hover { background:#166534; color:white; border-color:#166534; }
 </style>
 </head>
 <body>

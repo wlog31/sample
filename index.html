@@ -4,140 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2022 개정 교육과정 선택과목 안내서</title>
+<link rel="stylesheet" href="styles/main.css">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
-    background: #f0f4f8;
-    color: #1a202c;
-    min-height: 100vh;
-  }
-
-  /* ── 헤더 ── */
+  /* ── 홈 전용 스타일 ── */
   header {
     background: linear-gradient(135deg, #1e3a5f 0%, #2d6a9f 60%, #3a8dc5 100%);
-    color: white;
-    padding: 3rem 2rem 4rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+    color: white; padding: 3rem 2rem 4rem;
+    text-align: center; position: relative; overflow: hidden;
   }
-  header::before {
-    content: '';
-    position: absolute;
-    top: -50%; left: -10%;
-    width: 120%; height: 200%;
-    background: radial-gradient(ellipse at center, rgba(255,255,255,0.07) 0%, transparent 60%);
-  }
-  header h1 { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; letter-spacing: -0.5px; }
-  header p  { font-size: 1rem; opacity: .85; margin-bottom: .3rem; }
-  header .badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.2);
-    border: 1px solid rgba(255,255,255,0.4);
-    border-radius: 20px;
-    padding: .25rem .9rem;
-    font-size: .8rem;
-    margin-top: .7rem;
-  }
-
-  /* ── 메인 카드 그리드 ── */
-  main {
-    max-width: 1000px;
-    margin: -2rem auto 0;
-    padding: 0 1.5rem 3rem;
-  }
-
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .menu-card {
-    background: white;
-    border-radius: 18px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    padding: 2rem 1.8rem;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    gap: .8rem;
-    transition: transform .2s, box-shadow .2s;
-    position: relative;
-    overflow: hidden;
-    border-top: 5px solid transparent;
-  }
-  .menu-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.14);
-  }
-  .menu-card.blue  { border-top-color: #1e4d8c; }
-  .menu-card.green { border-top-color: #166534; }
-  .menu-card.orange{ border-top-color: #c05621; }
-
-  .card-icon { font-size: 2.8rem; line-height: 1; }
-  .card-title { font-size: 1.3rem; font-weight: 700; }
-  .card-subtitle { font-size: .85rem; color: #374151; line-height: 1.5; }
-  .card-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .3rem; }
-  .tag {
-    background: #edf2f7;
-    color: #374151;
-    font-size: .72rem;
-    padding: .2rem .6rem;
-    border-radius: 99px;
-    font-weight: 500;
-  }
-  .card-arrow {
-    position: absolute;
-    right: 1.5rem; bottom: 1.5rem;
-    font-size: 1.2rem;
-    color: #64748b;
-    transition: right .2s;
-  }
-  .menu-card:hover .card-arrow { right: 1rem; }
-
-  /* ── 안내 박스 ── */
-  .info-box {
-    background: white;
-    border-radius: 14px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    padding: 1.5rem 2rem;
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-  }
-  .info-icon { font-size: 1.8rem; flex-shrink: 0; }
-  .info-text h3 { font-size: .95rem; font-weight: 700; margin-bottom: .4rem; color: #1e4d8c; }
-  .info-text p { font-size: .83rem; color: #374151; line-height: 1.6; }
-
-  /* ── 통계 바 ── */
-  .stats {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 2rem auto;
-    flex-wrap: wrap;
-  }
-  .stat-item { text-align: center; }
-  .stat-num { font-size: 2rem; font-weight: 800; color: #1e4d8c; }
-  .stat-label { font-size: .8rem; color: #374151; }
-
-  footer {
-    text-align: center;
-    padding: 2rem;
-    font-size: .8rem;
-    color: #64748b;
-    border-top: 1px solid #e2e8f0;
-  }
-
-  @media (max-width: 600px) {
-    header h1 { font-size: 1.4rem; }
-    .card-grid { grid-template-columns: 1fr; }
-    .stats { gap: 1.2rem; }
-  }
+  header::before { content:""; position:absolute; top:-50%; left:-10%; width:120%; height:200%; background:radial-gradient(ellipse at center,rgba(255,255,255,.07) 0%,transparent 60%); }
+  header h1 { font-size: 2rem; font-weight: 800; margin-bottom: .5rem; letter-spacing: -.5px; }
+  header p  { font-size: 1rem; opacity: .9; margin-bottom: .3rem; }
+  header .badge { display:inline-block; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.4); border-radius:20px; padding:.25rem .9rem; font-size:.8rem; margin-top:.7rem; }
+  main { max-width: 1000px; margin: -2rem auto 0; padding: 0 1.5rem 3rem; }
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
+  .menu-card { background:white; border-radius:18px; box-shadow:0 4px 20px rgba(0,0,0,.08); padding:2rem 1.8rem; text-decoration:none; color:inherit; display:flex; flex-direction:column; gap:.8rem; transition:transform .2s,box-shadow .2s; position:relative; overflow:hidden; border-top:5px solid transparent; }
+  .menu-card:hover { transform:translateY(-5px); box-shadow:0 12px 32px rgba(0,0,0,.14); }
+  .menu-card.blue  { border-top-color:#1e4d8c; }
+  .menu-card.green { border-top-color:#166534; }
+  .menu-card.orange{ border-top-color:#c05621; }
+  .card-icon { font-size:2.8rem; line-height:1; }
+  .card-title { font-size:1.3rem; font-weight:700; color:#0f172a; }
+  .card-subtitle { font-size:.85rem; color:#374151; line-height:1.5; }
+  .card-tags { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.3rem; }
+  .tag { background:#edf2f7; color:#374151; font-size:.72rem; padding:.2rem .6rem; border-radius:99px; font-weight:500; }
+  .card-arrow { position:absolute; right:1.5rem; bottom:1.5rem; font-size:1.2rem; color:#64748b; transition:right .2s; }
+  .menu-card:hover .card-arrow { right:1rem; }
+  .info-box { background:white; border-radius:14px; box-shadow:0 2px 10px rgba(0,0,0,.06); padding:1.5rem 2rem; margin-top:1.5rem; display:flex; gap:1rem; align-items:flex-start; }
+  .info-icon { font-size:1.8rem; flex-shrink:0; }
+  .info-text h3 { font-size:.95rem; font-weight:700; margin-bottom:.4rem; color:#1e4d8c; }
+  .info-text p  { font-size:.83rem; color:#374151; line-height:1.6; }
+  .stats { display:flex; justify-content:center; gap:2rem; margin:2rem auto; flex-wrap:wrap; }
+  .stat-item { text-align:center; }
+  .stat-num   { font-size:2rem; font-weight:800; color:#1e4d8c; }
+  .stat-label { font-size:.8rem; color:#374151; }
+  @media(max-width:600px){ header h1{font-size:1.4rem;} .card-grid{grid-template-columns:1fr;} .stats{gap:1.2rem;} }
 </style>
 </head>
 <body>

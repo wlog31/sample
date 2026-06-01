@@ -1,0 +1,329 @@
+/* ════════════════════════════════════════════════════════════════
+   2022 개정 교육과정 선택과목 안내서 — 공통 스타일시트
+   테마 변수를 <style>에서 :root 재정의로 페이지별 색상 적용
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── CSS 변수 (기본: 파란 계열) ── */
+:root {
+  --c-primary:    #1e3a5f;
+  --c-secondary:  #1e4d8c;
+  --c-accent:     #2d6a9f;
+  --c-light-bg:   #ebf4ff;
+  --c-header-grad: linear-gradient(135deg, #1e3a5f 0%, #2d6a9f 100%);
+  --c-hero-grad:  linear-gradient(135deg, #ebf4ff, #bfdbfe);
+  --c-hero-border:#1e4d8c;
+  --c-chip-hover: #1e4d8c;
+  --c-active-bg:  #ebf4ff;
+  --c-active-border: #1e4d8c;
+  --c-input-focus:#1e4d8c;
+  --c-sidebar-title: #1e4d8c;
+}
+
+/* ── 리셋 & 베이스 ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  background: #f0f4f8;
+  color: #0f172a;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* ── 상단 바 ── */
+.top-bar {
+  background: var(--c-header-grad);
+  color: white;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.top-bar a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .85rem; }
+.top-bar a:hover { color: white; }
+.top-bar h1 { font-size: 1.1rem; font-weight: 700; flex: 1; }
+.breadcrumb { font-size: .8rem; opacity: .75; }
+
+/* ── 레이아웃 ── */
+.layout { display: flex; height: calc(100vh - 56px); overflow: hidden; }
+
+/* ── 사이드바 ── */
+.sidebar {
+  width: 270px;
+  flex-shrink: 0;
+  background: white;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.sidebar-title {
+  font-size: .68rem;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .8rem 1.2rem .4rem;
+}
+
+/* ── 검색 박스 ── */
+.search-box { padding: .6rem 1rem; border-bottom: 1px solid #e2e8f0; }
+.search-box input {
+  width: 100%;
+  padding: .5rem .8rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: .85rem;
+  outline: none;
+  font-family: inherit;
+}
+.search-box input:focus { border-color: var(--c-input-focus); }
+
+/* ── 목록 아이템 (계열/학과) ── */
+.series-item, .dept-item {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  padding: .65rem 1.2rem;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  font-size: .87rem;
+  transition: background .15s;
+}
+.series-item:hover, .dept-item:hover { background: #f7fafc; }
+.series-item.active, .dept-item.active {
+  background: var(--c-active-bg);
+  border-left-color: var(--c-active-border);
+  font-weight: 600;
+  color: var(--c-primary);
+}
+.series-icon { font-size: 1.3rem; width: 1.8rem; text-align: center; }
+
+/* ── 콘텐츠 영역 ── */
+.content { flex: 1; overflow-y: auto; padding: 2rem; }
+.page-content { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+/* ── 빈 상태 ── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #64748b;
+  gap: 1rem;
+  text-align: center;
+}
+.empty-state .icon { font-size: 4rem; }
+.empty-state h2 { font-size: 1.1rem; color: #374151; }
+.empty-state p { font-size: .85rem; }
+
+/* ── 정보 카드 ── */
+.info-card {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.07);
+  padding: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+.info-card h3 {
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--c-secondary);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: .8rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.info-card p {
+  font-size: .88rem;
+  line-height: 1.75;
+  color: #374151;
+  white-space: pre-line;
+}
+
+/* ── 페이지 헤더(Hero) ── */
+.dept-header, .series-header-box, .subj-hero {
+  background: var(--c-hero-grad);
+  border-radius: 14px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  border-left: 5px solid var(--c-hero-border);
+}
+.dept-header h2, .subj-hero h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--c-primary);
+}
+.dept-header .meta, .series-header-box .meta {
+  font-size: .83rem;
+  color: var(--c-secondary);
+  margin-top: .3rem;
+  font-weight: 600;
+}
+
+/* 계열 헤더 (아이콘 + 텍스트 레이아웃) */
+.series-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.series-header .big-icon { font-size: 2.5rem; }
+.series-header h2 { font-size: 1.6rem; font-weight: 800; color: var(--c-primary); }
+.series-header p { font-size: .85rem; color: var(--c-secondary); margin-top: .2rem; font-weight: 600; }
+
+/* ── 권장 선택과목 표 ── */
+.subj-table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid #e2e8f0; }
+.subj-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .82rem;
+  table-layout: fixed;
+}
+.subj-table th {
+  padding: .6rem .8rem;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-align: left;
+  border-bottom: 2px solid #e2e8f0;
+}
+.th-group   { background: #f7fafc; color: #374151; width: 88px; }
+.th-general { background: #dbeafe; color: #1e3a8a; }
+.th-career  { background: #dcfce7; color: #14532d; }
+.th-fusion  { background: #fce7f3; color: #831843; }
+.subj-table td {
+  padding: .5rem .6rem;
+  vertical-align: top;
+  border-bottom: 1px solid #f0f4f8;
+  border-right: 1px solid #e2e8f0;
+}
+.subj-table td:last-child { border-right: none; }
+.td-group {
+  font-size: .71rem;
+  font-weight: 700;
+  color: #374151;
+  background: #f7fafc;
+  white-space: normal;
+  word-break: keep-all;
+  line-height: 1.4;
+}
+.td-chips { }
+.chips-wrap { display: flex; flex-wrap: wrap; gap: .3rem; align-content: flex-start; }
+.subj-table tr:last-child td { border-bottom: none; }
+
+/* ── 과목/학과 칩 ── */
+.subj-chip, .dept-chip, .similar-chip {
+  font-size: .78rem;
+  padding: .28rem .7rem;
+  border-radius: 99px;
+  text-decoration: none;
+  border: 1px solid;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  display: inline-block;
+  white-space: nowrap;
+}
+/* 과목 칩 (기본) */
+.subj-chip {
+  background: #edf2f7;
+  color: #1f2937;
+  border-color: #cbd5e0;
+}
+.subj-chip:hover { background: var(--c-chip-hover); color: white; border-color: var(--c-chip-hover); }
+/* 학과 칩 */
+.dept-chip {
+  background: #e6f0fb;
+  color: #1e3a6e;
+  border-color: #b9d1f0;
+}
+.dept-chip:hover { background: #1e4d8c; color: white; border-color: #1e4d8c; }
+/* 유사학과 칩 */
+.similar-chip {
+  background: #f0fff4;
+  color: #14532d;
+  border-color: #9ae6b4;
+  border-radius: 6px;
+  margin: .2rem;
+}
+.similar-chip:hover { background: #166534; color: white; }
+
+/* ── 과목 구분 배지 ── */
+.badge-type { display: inline-block; font-size: .68rem; font-weight: 700; padding: .15rem .5rem; border-radius: 4px; }
+.badge-general { background: #dbeafe; color: #1e3a8a; }
+.badge-career  { background: #dcfce7; color: #14532d; }
+.badge-fusion  { background: #fce7f3; color: #831843; }
+
+/* ── 대학 목록 ── */
+.univ-grid { display: flex; flex-wrap: wrap; gap: .4rem; }
+.univ-chip {
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: .25rem .6rem;
+  font-size: .75rem;
+  color: #374151;
+}
+
+/* ── 팁 박스 ── */
+.tip-box {
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border: 1px solid #f6d860;
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+}
+.tip-box h3 { color: #92400e; font-size: .82rem; font-weight: 700; margin-bottom: .6rem; }
+.tip-box p  { font-size: .87rem; color: #4a2c0a; line-height: 1.7; white-space: pre-line; }
+
+/* ── 선택과목 히어로 ── */
+.subj-hero .intro { font-size: .9rem; color: #4a2c0a; line-height: 1.65; margin-top: .5rem; }
+.subj-hero .meta  { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .8rem; }
+
+/* ── 메타 배지 ── */
+.meta-badge { font-size: .72rem; padding: .2rem .65rem; border-radius: 6px; font-weight: 600; }
+.meta-type-general { background: #dbeafe; color: #1e3a8a; }
+.meta-type-career   { background: #dcfce7; color: #14532d; }
+.meta-type-fusion   { background: #fce7f3; color: #831843; }
+.meta-type-other    { background: #f3f4f6; color: #1f2937; }
+.meta-suneung-y { background: #fef3c7; color: #92400e; }
+.meta-suneung-n { background: #f3f4f6; color: #374151; }
+.meta-eval { background: #f0fdf4; color: #14532d; }
+
+/* ── 선택과목 상세 ── */
+.kw-grid { display: flex; flex-wrap: wrap; gap: .4rem; }
+.kw-chip { background: #fff5eb; color: #92400e; font-size: .78rem; padding: .25rem .65rem; border-radius: 99px; border: 1px solid #fbd38d; }
+.domain-grid { display: flex; flex-wrap: wrap; gap: .4rem; }
+.domain-chip { background: #f7fafc; color: #374151; font-size: .78rem; padding: .25rem .7rem; border-radius: 6px; border: 1px solid #e2e8f0; }
+.rec-list { list-style: none; }
+.rec-list li { font-size: .88rem; color: #374151; line-height: 1.7; padding: .2rem 0 .2rem 1.2rem; position: relative; }
+.rec-list li::before { content: '✔'; position: absolute; left: 0; color: var(--c-accent); font-size: .75rem; top: .25rem; }
+.suneung-box { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.suneung-item { flex: 1; min-width: 120px; text-align: center; }
+.suneung-item .s-icon  { font-size: 1.8rem; }
+.suneung-item .s-label { font-size: .7rem; color: #64748b; margin: .3rem 0 .1rem; }
+.suneung-item .s-val   { font-size: .95rem; font-weight: 700; color: #1f2937; }
+
+/* ── footer ── */
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: .8rem;
+  color: #64748b;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 700px) {
+  .layout { flex-direction: column; height: auto; }
+  .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #e2e8f0; max-height: none; height: auto; }
+  .content { padding: 1rem; }
+  .page-content { padding: 1rem; }
+}
+@media (max-width: 600px) {
+  .subj-table { font-size: .72rem; }
+  .th-group { width: 52px; }
+  .subj-chip { white-space: normal; word-break: keep-all; font-size: .68rem; padding: .15rem .4rem; }
+}

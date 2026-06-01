@@ -4,96 +4,43 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>선택과목별 안내 | 선택과목 안내서</title>
+<link rel="stylesheet" href="../styles/main.css">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif; background:#f0f4f8; color:#0f172a; }
-
-  .top-bar {
-    background: linear-gradient(135deg,#5c3a1a 0%,#e07b2a 100%);
-    color:white; padding:1rem 1.5rem;
-    display:flex; align-items:center; gap:1rem;
-  }
-  .top-bar a { color:rgba(255,255,255,.75); text-decoration:none; font-size:.85rem; }
-  .top-bar a:hover { color:white; }
-  .top-bar h1 { font-size:1.1rem; font-weight:700; flex:1; }
-  .breadcrumb { font-size:.8rem; opacity:.7; }
-
-  .layout { display:flex; height:calc(100vh - 56px); overflow:hidden; }
-
-  .sidebar {
-    width:260px; flex-shrink:0; background:white;
-    border-right:1px solid #e2e8f0;
-    display:flex; flex-direction:column; overflow:hidden;
-  }
-
+  :root { --c-primary:#7b341e; --c-secondary:#c05621; --c-accent:#c05621;
+    --c-header-grad:linear-gradient(135deg,#5c3a1a 0%,#c05621 100%);
+    --c-hero-grad:linear-gradient(135deg,#fff5eb,#fde8cc);
+    --c-hero-border:#c05621; --c-chip-hover:#c05621;
+    --c-active-bg:#fff5eb; --c-active-border:#c05621; --c-input-focus:#c05621; }
+  /* 필터 패널 */
   .filter-panel { padding:.7rem 1rem; border-bottom:1px solid #e2e8f0; background:#fafafa; }
-  .filter-panel label { font-size:.72rem; font-weight:700; color:#1f2937; display:block; margin-bottom:.35rem; }
+  .filter-panel label { font-size:.72rem; font-weight:700; color:#374151; display:block; margin-bottom:.35rem; }
   .type-btns { display:grid; grid-template-columns:1fr; gap:.3rem; }
   .type-btns-row2 { display:grid; grid-template-columns:repeat(3,1fr); gap:.3rem; margin-top:.3rem; }
-  .type-btn {
-    padding:.35rem .3rem; font-size:.72rem;
-    border:1px solid #e2e8f0; border-radius:6px; cursor:pointer;
-    background:white; text-align:center; transition:all .15s;
-    font-family:inherit; width:100%;
-  }
-  .type-btn.active-general { background:#dbeafe; border-color:#93c5fd; color:#1e40af; font-weight:700; }
-  .type-btn.active-career  { background:#dcfce7; border-color:#86efac; color:#166534; font-weight:700; }
-  .type-btn.active-fusion  { background:#fce7f3; border-color:#f9a8d4; color:#9d174d; font-weight:700; }
-  .type-btn.active-all     { background:#e2e8f0; border-color:#64748b; color:#0f172a; font-weight:700; }
-
+  .type-btn { padding:.35rem .3rem; font-size:.72rem; border:1px solid #e2e8f0; border-radius:6px; cursor:pointer; background:white; text-align:center; transition:all .15s; font-family:inherit; width:100%; }
+  .type-btn.active-general { background:#dbeafe; border-color:#93c5fd; color:#1e3a8a; font-weight:700; }
+  .type-btn.active-career  { background:#dcfce7; border-color:#86efac; color:#14532d; font-weight:700; }
+  .type-btn.active-fusion  { background:#fce7f3; border-color:#f9a8d4; color:#831843; font-weight:700; }
+  .type-btn.active-all     { background:#e2e8f0; border-color:#94a3b8; color:#1f2937; font-weight:700; }
+  /* 교과군 탭 */
   .group-tabs { overflow-y:auto; flex-shrink:0; border-bottom:1px solid #e2e8f0; max-height:22vh; }
-  .group-tab {
-    display:flex; align-items:center; gap:.5rem;
-    padding:.55rem 1rem; cursor:pointer; font-size:.83rem;
-    border-left:3px solid transparent; transition:background .15s;
-  }
+  .group-tab { display:flex; align-items:center; gap:.5rem; padding:.55rem 1rem; cursor:pointer; font-size:.83rem; border-left:3px solid transparent; transition:background .15s; }
   .group-tab:hover { background:#fef3ec; }
-  .group-tab.active { background:#fff5eb; border-left-color:#c05621; font-weight:600; }
-
-  .search-box { padding:.6rem 1rem; border-bottom:1px solid #e2e8f0; }
-  .search-box input {
-    width:100%; padding:.45rem .75rem; border:1px solid #cbd5e0;
-    border-radius:8px; font-size:.83rem; outline:none;
-  }
-  .search-box input:focus { border-color:#c05621; }
-
+  .group-tab.active { background:#fff5eb; border-left-color:#c05621; font-weight:600; color:#7b341e; }
+  /* 과목 목록 */
   .subject-list { flex:1; overflow-y:auto; padding:.3rem 0; }
-  .subj-item {
-    padding:.55rem 1rem; cursor:pointer; font-size:.85rem;
-    border-left:3px solid transparent; transition:background .15s;
-    display:flex; justify-content:space-between; align-items:center;
-  }
+  .subj-item { padding:.55rem 1rem; cursor:pointer; font-size:.85rem; border-left:3px solid transparent; transition:background .15s; display:flex; justify-content:space-between; align-items:center; }
   .subj-item:hover { background:#fef9f5; }
-  .subj-item.active { background:#fff5eb; border-left-color:#c05621; font-weight:600; }
-  .subj-item-name { flex:1; }
-  .subj-type-dot {
-    width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-left:.5rem;
-  }
-  .dot-general { background:#93c5fd; }
-  .dot-career  { background:#86efac; }
-  .dot-fusion  { background:#f9a8d4; }
-  .dot-other   { background:#cbd5e0; }
+  .subj-item.active { background:#fff5eb; border-left-color:#c05621; font-weight:600; color:#7b341e; }
+  .subj-item-name { flex:1; color:#1f2937; }
+  .subj-type-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-left:.5rem; }
+  .dot-general { background:#3b82f6; }
+  .dot-career  { background:#22c55e; }
+  .dot-fusion  { background:#ec4899; }
+  .dot-other   { background:#94a3b8; }
   .list-count { font-size:.68rem; color:#64748b; padding:.3rem 1rem; }
-
-  .content { flex:1; overflow-y:auto; padding:2rem; }
-
-  .empty-state {
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    height:100%; color:#64748b; gap:1rem; text-align:center;
-  }
-  .empty-state .icon { font-size:4rem; }
-  .empty-state h2 { font-size:1.1rem; color:#1f2937; }
-
-  @media(max-width:700px){
-    .layout { flex-direction:column; height:auto; }
-    .sidebar {
-      width:100%; border-right:none; border-bottom:1px solid #e2e8f0;
-      max-height:none; height:auto;
-    }
-    .group-tabs { max-height:28vw; min-height:60px; }
-    .subject-list { max-height:38vh; min-height:120px; }
-    .content { padding:1rem; }
-  }
+  /* 과목 히어로 전용 */
+  .subj-hero h2 { color:#7b341e; }
+  @media(max-width:700px){ .group-tabs{max-height:28vw;min-height:60px;} .subject-list{max-height:38vh;min-height:120px;} }
 </style>
 </head>
 <body>
