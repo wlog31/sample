@@ -23,20 +23,20 @@
   .subj-table-wrap { overflow-x:auto; border-radius:10px; border:1px solid #e2e8f0; }
   .subj-table { width:100%; border-collapse:collapse; font-size:.82rem; table-layout:fixed; }
   .subj-table th { padding:.6rem .8rem; font-size:.72rem; font-weight:700; letter-spacing:.05em; text-align:left; border-bottom:2px solid #e2e8f0; }
-  .th-group { background:#f7fafc; color:#718096; width:90px; }
+  .th-group { background:#f7fafc; color:#718096; width:88px; }
   .th-general { background:#dbeafe; color:#1e40af; width:30%; }
   .th-career  { background:#dcfce7; color:#166534; width:30%; }
   .th-fusion  { background:#fce7f3; color:#9d174d; width:30%; }
   .subj-table td { padding:.5rem .6rem; vertical-align:top; border-bottom:1px solid #f0f4f8; border-right:1px solid #e2e8f0; }
   .subj-table td:last-child { border-right:none; }
-  .td-group { font-size:.73rem; font-weight:700; color:#4a5568; background:#f7fafc; white-space:nowrap; }
+  .td-group { font-size:.73rem; font-weight:700; color:#4a5568; background:#f7fafc; white-space:normal; word-break:keep-all; line-height:1.4; }
   .td-chips { }
   .chips-wrap { display:flex; flex-wrap:wrap; gap:.3rem; align-content:flex-start; }
   .subj-chip { background:#edf2f7; color:#2d3748; font-size:.75rem; padding:.2rem .6rem; border-radius:99px; text-decoration:none; border:1px solid #e2e8f0; cursor:pointer; transition:background .15s; display:inline-block; white-space:nowrap; }
-  @media(max-width:600px){ .subj-table { font-size:.72rem; } .subj-chip { white-space:normal; word-break:keep-all; font-size:.7rem; padding:.15rem .4rem; } .td-chips { overflow:hidden; } .th-group { width:56px; } }
+  @media(max-width:600px){ .subj-table { font-size:.72rem; } .th-group { width:52px; } .subj-chip { white-space:normal; word-break:keep-all; font-size:.68rem; padding:.15rem .4rem; } } .subj-chip { white-space:normal; word-break:keep-all; font-size:.7rem; padding:.15rem .4rem; } .td-chips { overflow:hidden; } .th-group { width:56px; } }
   .subj-chip:hover { background:#2d6a9f; color:white; border-color:#2d6a9f; }
   .subj-table tr:last-child td { border-bottom:none; }
-  @media(max-width:600px){ .page-content { padding:1rem; } }
+  @media(max-width:600px){ .subj-table { font-size:.72rem; } .th-group { width:52px; } .subj-chip { white-space:normal; word-break:keep-all; font-size:.68rem; padding:.15rem .4rem; } } }
 
 .top-bar { background: linear-gradient(135deg,#1a5c3a 0%,#2d9f6a 100%); }
 .dept-header { background: linear-gradient(135deg,#f0fff4,#c6f6d5); border-radius:14px; padding:1.5rem 2rem; margin-bottom:1.5rem; border-left:5px solid #2d9f6a; }
@@ -81,19 +81,19 @@
       <td class="td-chips"><div class="chips-wrap"></div></td>
     </tr><tr>
       <td class="td-group">사회</td>
-      <td class="td-chips"><div class="chips-wrap"></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/현대사회와_윤리_등/index.html">현대사회와 윤리 등</a></div></td>
       <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/사회/법과_사회/index.html">법과 사회</a></div></td>
       <td class="td-chips"><div class="chips-wrap"></div></td>
     </tr><tr>
       <td class="td-group">과학</td>
       <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/과학/화학/index.html">화학</a><a class="subj-chip" href="../../subjects/과학/생명과학/index.html">생명과학</a></div></td>
       <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/과학/세포와_물질대사/index.html">세포와 물질대사</a><a class="subj-chip" href="../../subjects/과학/생물의_유전/index.html">생물의 유전</a></div></td>
-      <td class="td-chips"><div class="chips-wrap"></div></td>
-    </tr><tr>
-      <td class="td-group">기타</td>
-      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/현대사회와_윤리_등/index.html">현대사회와 윤리 등</a></div></td>
-      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/보건_등/index.html">보건 등</a></div></td>
       <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/과학의_역사와_문화_등/index.html">과학의 역사와 문화 등</a></div></td>
+    </tr><tr>
+      <td class="td-group">교양</td>
+      <td class="td-chips"><div class="chips-wrap"></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/보건_등/index.html">보건 등</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"></div></td>
     </tr></tbody>
   </table></div>
   </div>

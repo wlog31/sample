@@ -23,20 +23,20 @@
   .subj-table-wrap { overflow-x:auto; border-radius:10px; border:1px solid #e2e8f0; }
   .subj-table { width:100%; border-collapse:collapse; font-size:.82rem; table-layout:fixed; }
   .subj-table th { padding:.6rem .8rem; font-size:.72rem; font-weight:700; letter-spacing:.05em; text-align:left; border-bottom:2px solid #e2e8f0; }
-  .th-group { background:#f7fafc; color:#718096; width:90px; }
+  .th-group { background:#f7fafc; color:#718096; width:88px; }
   .th-general { background:#dbeafe; color:#1e40af; width:30%; }
   .th-career  { background:#dcfce7; color:#166534; width:30%; }
   .th-fusion  { background:#fce7f3; color:#9d174d; width:30%; }
   .subj-table td { padding:.5rem .6rem; vertical-align:top; border-bottom:1px solid #f0f4f8; border-right:1px solid #e2e8f0; }
   .subj-table td:last-child { border-right:none; }
-  .td-group { font-size:.73rem; font-weight:700; color:#4a5568; background:#f7fafc; white-space:nowrap; }
+  .td-group { font-size:.73rem; font-weight:700; color:#4a5568; background:#f7fafc; white-space:normal; word-break:keep-all; line-height:1.4; }
   .td-chips { }
   .chips-wrap { display:flex; flex-wrap:wrap; gap:.3rem; align-content:flex-start; }
   .subj-chip { background:#edf2f7; color:#2d3748; font-size:.75rem; padding:.2rem .6rem; border-radius:99px; text-decoration:none; border:1px solid #e2e8f0; cursor:pointer; transition:background .15s; display:inline-block; white-space:nowrap; }
-  @media(max-width:600px){ .subj-table { font-size:.72rem; } .subj-chip { white-space:normal; word-break:keep-all; font-size:.7rem; padding:.15rem .4rem; } .td-chips { overflow:hidden; } .th-group { width:56px; } }
+  @media(max-width:600px){ .subj-table { font-size:.72rem; } .th-group { width:52px; } .subj-chip { white-space:normal; word-break:keep-all; font-size:.68rem; padding:.15rem .4rem; } } .subj-chip { white-space:normal; word-break:keep-all; font-size:.7rem; padding:.15rem .4rem; } .td-chips { overflow:hidden; } .th-group { width:56px; } }
   .subj-chip:hover { background:#2d6a9f; color:white; border-color:#2d6a9f; }
   .subj-table tr:last-child td { border-bottom:none; }
-  @media(max-width:600px){ .page-content { padding:1rem; } }
+  @media(max-width:600px){ .subj-table { font-size:.72rem; } .th-group { width:52px; } .subj-chip { white-space:normal; word-break:keep-all; font-size:.68rem; padding:.15rem .4rem; } } }
 
 .top-bar { background: linear-gradient(135deg,#1e3a5f 0%,#2d6a9f 100%); }
 .series-header { display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem; }
@@ -108,26 +108,22 @@
       <td class="td-group">과학</td>
       <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/과학/물리학/index.html">물리학</a><a class="subj-chip" href="../../subjects/과학/화학/index.html">화학</a><a class="subj-chip" href="../../subjects/과학/생명과학/index.html">생명과학</a><a class="subj-chip" href="../../subjects/과학/지구과학/index.html">지구과학</a></div></td>
       <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/과학/역학과_에너지/index.html">역학과 에너지</a><a class="subj-chip" href="../../subjects/과학/전자기와_양자/index.html">전자기와 양자</a><a class="subj-chip" href="../../subjects/과학/물질과_에너지/index.html">물질과 에너지</a><a class="subj-chip" href="../../subjects/과학/화학_반응의_세계/index.html">화학 반응의 세계</a><a class="subj-chip" href="../../subjects/과학/세포와_물질대사/index.html">세포와 물질대사</a><a class="subj-chip" href="../../subjects/과학/생물의_유전/index.html">생물의 유전</a><a class="subj-chip" href="../../subjects/과학/지구시스템과학/index.html">지구시스템과학</a></div></td>
-      <td class="td-chips"><div class="chips-wrap"></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/융합과학_탐구_등/index.html">융합과학 탐구 등</a></div></td>
     </tr><tr>
-      <td class="td-group">기술·가정/정보</td>
-      <td class="td-chips"><div class="chips-wrap"></div></td>
+      <td class="td-group">기술·가정<wbr>/정보</td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/기술_가정/index.html">기술·가정</a></div></td>
       <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기술_가정-정보/인공지능_기초/index.html">인공지능 기초</a><a class="subj-chip" href="../../subjects/기술_가정-정보/데이터_과학/index.html">데이터 과학</a></div></td>
       <td class="td-chips"><div class="chips-wrap"></div></td>
     </tr><tr>
-      <td class="td-group">제2외국어/한문</td>
+      <td class="td-group">제2외국어<wbr>/한문</td>
       <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/제2외국어_한문/제2외국어/index.html">제2외국어</a></div></td>
       <td class="td-chips"><div class="chips-wrap"></div></td>
       <td class="td-chips"><div class="chips-wrap"></div></td>
     </tr><tr>
-      <td class="td-group">기타</td>
-      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/인문/index.html">인문</a><a class="subj-chip" href="../../subjects/기타/사회_계열_교육과_화법과_언어/index.html">사회 계열 교육과: 화법과 언어</a><a class="subj-chip" href="../../subjects/기타/한문_등_자연_계열_교육과_화법과_언어/index.html">한문 등
-자연 계열 교육과: 화법과 언어</a><a class="subj-chip" href="../../subjects/기타/기술_가정/index.html">기술·가정</a><a class="subj-chip" href="../../subjects/기타/정보_등_※_초등교육과/index.html">정보 등
-※ 초등교육과</a><a class="subj-chip" href="../../subjects/기타/유아교육과는_계열과_관계_없이_좋아하는_과목이라면_적극적으로_이수할_필요가_있으며/index.html">유아교육과는 계열과 관계 없이 좋아하는 과목이라면 적극적으로 이수할 필요가 있으며</a><a class="subj-chip" href="../../subjects/기타/예체능_과목도_부담이_되지_않는_선에서_적극적으로_이수해야_함./index.html">예체능 과목도 부담이 되지 않는 선에서 적극적으로 이수해야 함.</a></div></td>
-      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/인문/index.html">인문</a><a class="subj-chip" href="../../subjects/기타/사회_계열_교육과_주제_탐구_독서/index.html">사회 계열 교육과: 주제 탐구 독서</a><a class="subj-chip" href="../../subjects/기타/교육의_이해_등_자연_계열_교육과_주제_탐구_독서/index.html">교육의 이해 등
-자연 계열 교육과: 주제 탐구 독서</a><a class="subj-chip" href="../../subjects/기타/교육의_이해_등/index.html">교육의 이해 등</a></div></td>
-      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/인문/index.html">인문</a><a class="subj-chip" href="../../subjects/기타/사회_계열_교육과_독서_토론과_글쓰기/index.html">사회 계열 교육과: 독서 토론과 글쓰기</a><a class="subj-chip" href="../../subjects/기타/제2외국어_문화_등_자연_계열_교육과_실용_통계/index.html">제2외국어 문화 등
-자연 계열 교육과: 실용 통계</a><a class="subj-chip" href="../../subjects/기타/융합과학_탐구_등/index.html">융합과학 탐구 등</a></div></td>
+      <td class="td-group">교양</td>
+      <td class="td-chips"><div class="chips-wrap"></div></td>
+      <td class="td-chips"><div class="chips-wrap"><a class="subj-chip" href="../../subjects/기타/교육의_이해_등/index.html">교육의 이해 등</a></div></td>
+      <td class="td-chips"><div class="chips-wrap"></div></td>
     </tr></tbody>
   </table></div>
   </div>
